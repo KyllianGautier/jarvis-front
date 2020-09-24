@@ -1,0 +1,14 @@
+#login-wallpaper {
+  background: url("../images/login_background.jpg") no-repeat center;
+  background-size: cover;
+  height: 100%;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  #login-section {
+    display: block;
+    width: 500px;
+  }
+}

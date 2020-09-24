@@ -1,1 +1,47 @@
-<p>login works!</p>
+<p-toast></p-toast>
+<div id="login-wallpaper">
+  <p-panel id="login-section" header="Bienvenue sur Jarvis">
+    <p-tabView>
+      <p-tabPanel header="Connexion">
+        <form (submit)="signIn()" [formGroup]="signInForm" class="p-fluid">
+          <div class="p-field">
+            <span class="p-float-label">
+              <input type="text" formControlName="email" pInputText>
+              <label>Adresse mail</label>
+            </span>
+          </div>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input type="password" formControlName="password" pInputText>
+              <label>Mot de passe</label>
+            </span>
+          </div>
+          <p-button type="submit" label="Connexion"></p-button>
+        </form>
+      </p-tabPanel>
+      <p-tabPanel header="Inscription">
+        <form class="p-fluid p-formgrid p-grid" (submit)="signUp()" [formGroup]="signUpForm">
+          <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+              <input type="text" formControlName="firstName" pInputText>
+              <label>Prénom</label>
+            </span>
+          </div>
+          <div class="p-field p-col-12 p-md-6">
+            <span class="p-float-label">
+              <input type="text" formControlName="lastName" pInputText>
+              <label>Nom</label>
+            </span>
+          </div>
+          <div class="p-field p-col-12">
+            <span class="p-float-label">
+              <input type="text" formControlName="email" pInputText>
+              <label>Email</label>
+            </span>
+          </div>
+          <p-button class="p-col-12" type="submit" label="Inscription"></p-button>
+        </form>
+      </p-tabPanel>
+    </p-tabView>
+  </p-panel>
+</div>
