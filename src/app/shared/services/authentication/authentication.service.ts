@@ -58,4 +58,8 @@ export class AuthenticationService {
   public getSignedInUser(): User {
     return this.tokenStorageService.getUser();
   }
+
+  public signOut(): void {
+    this.tokenStorageService.removeToken();
+  }
 }

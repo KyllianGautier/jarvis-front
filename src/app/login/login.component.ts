@@ -39,14 +39,14 @@ export class LoginComponent implements OnInit {
       this.authenticationService.signIn(this.signInForm.value)
         .subscribe(
           auth => {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/']);
           },
           error => {
             this.messageService.add({
               severity: 'error',
               summary: 'Connexion refusée',
               detail: 'Adresse mail ou mot de passe incorrect(s).'
-            })
+            });
           }
         );
     }

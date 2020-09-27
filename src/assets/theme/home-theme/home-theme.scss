@@ -25,6 +25,11 @@
 
     #app-header-text {
       font-size: 24px;
+      margin-right: $home-layout-header-text-spacing;
+    }
+
+    .app-header-nav-button {
+      margin-right: $global-spacing;
     }
 
     #app-header-user-menu {

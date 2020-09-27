@@ -18,13 +18,23 @@ import {HttpClientModule} from '@angular/common/http';
 import {MessageService} from 'primeng/api';
 import {MenuModule} from 'primeng/menu';
 import {RippleModule} from 'primeng/ripple';
+import { NotesComponent } from './home/notes/notes.component';
+import { TasksComponent } from './home/tasks/tasks.component';
+import { ToWatchComponent } from './home/to-watch/to-watch.component';
+import { AdministrationComponent } from './home/administration/administration.component';
+import { ProfileComponent } from './home/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NotesComponent,
+    TasksComponent,
+    ToWatchComponent,
+    AdministrationComponent,
+    ProfileComponent
   ],
   imports: [
     HttpClientModule,

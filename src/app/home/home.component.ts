@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import {AuthenticationService} from '../shared/services/authentication/authentication.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,10 @@ export class HomeComponent implements OnInit {
 
   public userMenuItems: MenuItem[];
 
-  constructor() {}
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.navItems = [
@@ -23,8 +28,13 @@ export class HomeComponent implements OnInit {
     ];
 
     this.userMenuItems = [
-      { label: 'Paramètres', routerLink: '', icon: 'pi pi-cog' },
-      { label: 'Déconnexion', routerLink: '', icon: 'pi pi-sign-out' },
+      { label: 'Paramètres', routerLink: '', icon: 'pi pi-cog', command: () => this.router.navigate(['/profile']) },
+      { label: 'Déconnexion', routerLink: '', icon: 'pi pi-sign-out', command: () => this.signOut() },
     ];
+  }
+
+  public signOut(): void {
+    this.authenticationService.signOut();
+    this.router.navigate(['/login']);
   }
 }

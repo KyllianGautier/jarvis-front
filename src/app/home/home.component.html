@@ -2,7 +2,18 @@
   <div id="app-header">
     <img src="" alt="">
     <span id="app-header-text">Jarvis</span>
-    <p-button id="app-header-user-menu" (onClick)="userMenu.toggle($event)" label="Kyllian" icon="pi pi-angle-down" iconPos="right"></p-button>
+    <p-button
+      class="app-header-nav-button"
+      pRipple
+      *ngFor="let item of navItems"
+      [routerLink]="item.routerLink"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [styleClass]="rla.isActive ? '' : 'p-button-text'"
+      [label]="item.label"
+      [icon]="item.icon">
+    </p-button>
+    <p-button id="app-header-user-menu" (onClick)="userMenu.toggle($event)" styleClass="p-button-outlined" label="Kyllian" icon="pi pi-angle-down" iconPos="right"></p-button>
     <p-menu #userMenu [popup]="true" [model]="userMenuItems"></p-menu>
   </div>
   <div id="app-content">
