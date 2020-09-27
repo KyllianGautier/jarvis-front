@@ -1,1 +1,11 @@
-<p>home works!</p>
+<div id="home-container">
+  <div id="app-header">
+    <img src="" alt="">
+    <span id="app-header-text">Jarvis</span>
+    <p-button id="app-header-user-menu" (onClick)="userMenu.toggle($event)" label="Kyllian" icon="pi pi-angle-down" iconPos="right"></p-button>
+    <p-menu #userMenu [popup]="true" [model]="userMenuItems"></p-menu>
+  </div>
+  <div id="app-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

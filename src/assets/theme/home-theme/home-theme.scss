@@ -1,0 +1,39 @@
+// Import variables :
+@import "home-theme-variables";
+
+
+// ----------------------------------------
+// HOME LAYOUT VARIABLES :
+// ----------------------------------------
+
+#home-container {
+  display: grid;
+  grid-template-rows: $home-layout-header-height 1fr;
+  grid-template-columns: 1fr;
+
+  height: 100%;
+
+  #app-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    user-select: none;
+
+    background-color: $home-layout-header-bkg-color;
+    border-bottom: 1px solid $home-layout-header-border-color;
+    padding: $home-layout-header-padding;
+
+    #app-header-text {
+      font-size: 24px;
+    }
+
+    #app-header-user-menu {
+      position: absolute;
+      right: $global-spacing;
+    }
+  }
+
+  #app-content {
+    background-color: $home-layout-content-bkg-color;
+  }
+}

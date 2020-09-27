@@ -16,6 +16,8 @@ import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {ToastModule} from 'primeng/toast';
 import {HttpClientModule} from '@angular/common/http';
 import {MessageService} from 'primeng/api';
+import {MenuModule} from 'primeng/menu';
+import {RippleModule} from 'primeng/ripple';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {MessageService} from 'primeng/api';
     PanelModule,
     ButtonModule,
     ReactiveFormsModule,
-    ToastModule
+    ToastModule,
+    MenuModule,
+    RippleModule
   ],
   providers: [
     UserConnectionGuard,

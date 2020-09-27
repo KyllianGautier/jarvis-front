@@ -1,0 +1,22 @@
+// ----------------------------------------
+// GLOBAL VARIABLES :
+// ----------------------------------------
+
+// Primary color:
+$global-primary-color: var(--primary-color);
+
+// Background colors:
+$global-primary-bkg-color: var(--surface-a);
+$global-secondary-bkg-color: var(--surface-b);
+$global-tertiary-bkg-color: var(--surface-c);
+
+// Font colors:
+$global-primary-font-color: var(--text-color);
+
+// Font family:
+$global-font-family: var(--font-family);
+
+// Spacing:
+$global-spacing-small: 12px;
+$global-spacing: 18px;
+$global-spacing-large: 24px;
