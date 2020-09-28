@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  public signedInUser: User;
+
   public navItems: MenuItem[];
 
   public userMenuItems: MenuItem[];
@@ -20,6 +22,8 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.signedInUser = this.authenticationService.getSignedInUser();
+
     this.navItems = [
       { label: 'Notes', routerLink: 'notes', icon: 'pi pi-pencil' },
       { label: 'Tâches', routerLink: 'tasks', icon: 'pi pi-check-circle' },

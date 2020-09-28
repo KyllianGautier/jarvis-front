@@ -14,3 +14,11 @@ html, body {
   font-family: $global-font-family;
   color: $global-primary-font-color;
 }
+
+a {
+  color: $global-primary-font-color;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

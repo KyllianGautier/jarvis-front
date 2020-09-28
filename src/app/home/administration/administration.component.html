@@ -1,1 +1,47 @@
-<p>administration works!</p>
+<div id="module-container">
+  <p-tabView>
+    <p-tabPanel header="Demandes d'inscription">
+      <p-table [value]="signUpRequests" [paginator]="true" [rows]="maxRowPerPage" [showCurrentPageReport]="true"
+               currentPageReportTemplate="{first} à {last} de {totalRecords} demandes">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Date d'inscription</th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-signUpRequest>
+          <tr>
+            <td>{{ signUpRequest.firstName }}</td>
+            <td>{{ signUpRequest.lastName }}</td>
+            <td><a href="mailto:{{ signUpRequest.email }}">{{ signUpRequest.email }}</a></td>
+            <td>{{ signUpRequest.date | date: 'short' }}</td>
+            <td>
+              <p-button
+                pRipple
+                type="button"
+                label="Accepter"
+                icon="pi pi-check"
+                (onClick)="acceptSignUpRequest(signUpRequest.id)"
+                styleClass="p-button-raised p-button-success p-button-text" class="p-mr-3">
+              </p-button>
+              <p-button
+                pRipple
+                type="button"
+                label="Rejeter"
+                icon="pi pi-times"
+                (onClick)="rejectSignUpRequest(signUpRequest.id)"
+                styleClass="p-button-raised p-button-danger p-button-text" class="p-mr-3">
+              </p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-tabPanel>
+    <p-tabPanel header="Inscrits"></p-tabPanel>
+    <p-tabPanel header="Droits"></p-tabPanel>
+    <p-tabPanel header="Paramètres"></p-tabPanel>
+  </p-tabView>
+</div>

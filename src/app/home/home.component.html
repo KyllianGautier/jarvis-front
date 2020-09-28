@@ -13,7 +13,7 @@
       [label]="item.label"
       [icon]="item.icon">
     </p-button>
-    <p-button id="app-header-user-menu" (onClick)="userMenu.toggle($event)" styleClass="p-button-outlined" label="Kyllian" icon="pi pi-angle-down" iconPos="right"></p-button>
+    <p-button id="app-header-user-menu" (onClick)="userMenu.toggle($event)" styleClass="p-button-outlined" [label]="signedInUser.firstName" icon="pi pi-angle-down" iconPos="right"></p-button>
     <p-menu #userMenu [popup]="true" [model]="userMenuItems"></p-menu>
   </div>
   <div id="app-content">

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {MessageService} from 'primeng/api';
 import {AuthenticationService} from '../shared/services/authentication/authentication.service';
 import {Router} from '@angular/router';
+import {Observable, timer} from 'rxjs';
+import {map, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +12,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  public isEmailAvailable: boolean;
 
   signInForm: FormGroup;
   signUpForm: FormGroup;
@@ -28,11 +32,22 @@ export class LoginComponent implements OnInit {
     this.signUpForm = formBuilder.group({
       firstName: ['', [ Validators.required ]],
       lastName: ['', [ Validators.required ]],
-      email: ['', [ Validators.email, Validators.required ]]
+      email: ['', [ Validators.email, Validators.required ], this.emailAsyncValidator(this.authenticationService)]
     });
   }
 
   ngOnInit(): void { }
+
+  emailAsyncValidator = (authenticationService: AuthenticationService) => {
+    return (control) => {
+      return authenticationService.checkEmailValidity(control.value)
+        .pipe(
+          map((isAvailable) => {
+            return isAvailable ? null : { emailExists: true };
+          })
+        );
+    }
+  }
 
   public signIn(): void {
     if (this.signInForm.valid) {

@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import User from '../../../models/entities/User';
-import SignInResponse from '../../../models/responses/SignInResponse';
 
 const TOKEN_KEY = 'jarvis-token';
 

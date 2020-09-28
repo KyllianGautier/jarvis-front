@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { TokenStorageService } from './token-storage/token-storage.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { paths } from 'src/app/shared/constants/api-paths';
-import SignInResponse from '../../models/responses/SignInResponse';
-import {map} from 'rxjs/operators';
-import User from '../../models/entities/User';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +21,17 @@ export class AuthenticationService {
 
   public signUp(signUpRequest: any): Observable<any> {
     return this.http.post<any>(paths.API_PATH + paths.AUTHENTICATION_SIGN_UP, signUpRequest);
+  }
+
+  public checkEmailValidity(email: string): Observable<boolean> {
+    return this.http.post<boolean>(paths.API_PATH + paths.AUTHENTICATION_CHECK_EMAIL_VALIDITY, { email: email });
+  }
+
+  public getSignUpRequests(): Observable<SignUpRequest[]> {
+    return this.http.get<SignUpRequest[]>(
+      paths.API_PATH + paths.AUTHENTICATION_SIGN_UP_REQUEST,
+      { headers: this.getAuthorizationHeader() }
+      );
   }
 
   public acceptSignUpRequest(idSignUpRequest: number): Observable<any> {

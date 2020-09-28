@@ -10,8 +10,12 @@ $global-primary-bkg-color: var(--surface-a);
 $global-secondary-bkg-color: var(--surface-b);
 $global-tertiary-bkg-color: var(--surface-c);
 
+// Border colors:
+$global-primary-border-color: var(--surface-d);
+
 // Font colors:
 $global-primary-font-color: var(--text-color);
+$global-secondary-font-color: var(--text-color-secondary);
 
 // Font family:
 $global-font-family: var(--font-family);

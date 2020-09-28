@@ -1,4 +1,3 @@
-<p-toast></p-toast>
 <div id="login-wallpaper">
   <p-panel id="login-section" header="Bienvenue sur Jarvis">
     <p-tabView>
@@ -16,7 +15,7 @@
               <label>Mot de passe</label>
             </span>
           </div>
-          <p-button type="submit" label="Connexion"></p-button>
+          <p-button type="submit" label="Connexion" [disabled]="signInForm.invalid"></p-button>
         </form>
       </p-tabPanel>
       <p-tabPanel header="Inscription">
@@ -38,8 +37,9 @@
               <input type="text" formControlName="email" pInputText>
               <label>Email</label>
             </span>
+            <small class="p-invalid" *ngIf="signUpForm.get('email').hasError('emailExists')">Adresse mail déjà utilisée</small>
           </div>
-          <p-button class="p-col-12" type="submit" label="Inscription"></p-button>
+          <p-button class="p-col-12" type="submit" label="Inscription" [disabled]="signUpForm.invalid"></p-button>
         </form>
       </p-tabPanel>
     </p-tabView>
