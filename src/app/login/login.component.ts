@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
-import {MessageService} from 'primeng/api';
-import {AuthenticationService} from '../shared/services/authentication/authentication.service';
-import {Router} from '@angular/router';
-import {Observable, timer} from 'rxjs';
-import {map, switchMap} from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { AuthenticationService } from '../shared/services/authentication/authentication.service';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +13,6 @@ import {map, switchMap} from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
 
-  public isEmailAvailable: boolean;
-
   signInForm: FormGroup;
   signUpForm: FormGroup;
 
@@ -22,7 +20,8 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private formBuilder: FormBuilder,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {
     this.signInForm = formBuilder.group({
       email: ['', [ Validators.email, Validators.required ]],
@@ -46,7 +45,7 @@ export class LoginComponent implements OnInit {
             return isAvailable ? null : { emailExists: true };
           })
         );
-    }
+    };
   }
 
   public signIn(): void {
@@ -59,8 +58,8 @@ export class LoginComponent implements OnInit {
           error => {
             this.messageService.add({
               severity: 'error',
-              summary: 'Connexion refusée',
-              detail: 'Adresse mail ou mot de passe incorrect(s).'
+              summary: this.translate.instant('login.connection.signInForm.errorMessage.summary'),
+              detail: this.translate.instant('login.connection.signInForm.errorMessage.detail')
             });
           }
         );
@@ -74,8 +73,8 @@ export class LoginComponent implements OnInit {
           () => {
             this.messageService.add({
               severity: 'success',
-              summary: 'Inscription envoyée',
-              detail: 'Votre inscription sera traitée dans les plus brefs délais.'
+              summary: this.translate.instant('login.connection.signUpForm.successMessage.summary'),
+              detail: this.translate.instant('login.connection.signUpForm.successMessage.detail')
             });
             this.signUpForm.reset();
           },

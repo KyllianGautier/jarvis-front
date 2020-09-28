@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../shared/services/authentication/authentication.service';
 import {MessageService} from 'primeng/api';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-administration',
@@ -15,7 +16,8 @@ export class AdministrationComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class AdministrationComponent implements OnInit {
           this.signUpRequests = signUpRequests;
           this.messageService.add({
             severity: 'success',
-            summary: 'Demande acceptée'
+            summary: this.translate.instant('home.administration.signUpRequests.acceptMessage')
           });
         },
         error => console.error(error)
@@ -47,7 +49,7 @@ export class AdministrationComponent implements OnInit {
           this.signUpRequests = signUpRequests;
           this.messageService.add({
             severity: 'success',
-            summary: 'Demande refusée'
+            summary: this.translate.instant('home.administration.signUpRequests.rejectMessage')
           });
         },
         error => console.error(error)

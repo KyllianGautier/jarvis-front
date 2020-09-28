@@ -15,7 +15,7 @@ import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { MenuModule } from 'primeng/menu';
 import { RippleModule } from 'primeng/ripple';
@@ -27,8 +27,14 @@ import { ProfileComponent } from './home/profile/profile.component';
 import { TableModule} from 'primeng/table';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { registerLocaleData } from '@angular/common';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 registerLocaleData(localeFr);
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -43,6 +49,13 @@ registerLocaleData(localeFr);
     ProfileComponent
   ],
   imports: [
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader, // exported factory function needed for AoT compilation
+        deps: [ HttpClient ]
+      }
+    }),
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,

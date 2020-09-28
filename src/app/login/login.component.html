@@ -1,45 +1,47 @@
 <div id="login-wallpaper">
-  <p-panel id="login-section" header="Bienvenue sur Jarvis">
+  <p-panel id="login-section" header="{{ 'login.connection.welcomeMessage' | translate: { appName: 'Jarvis' } }}">
     <p-tabView>
-      <p-tabPanel header="Connexion">
+      <p-tabPanel header="{{ 'login.connection.signInForm.tabHeader' | translate }}">
         <form (submit)="signIn()" [formGroup]="signInForm" class="p-fluid">
           <div class="p-field">
             <span class="p-float-label">
               <input type="text" formControlName="email" pInputText>
-              <label>Adresse mail</label>
+              <label translate>login.connection.signInForm.form.email.label</label>
             </span>
           </div>
           <div class="p-field">
             <span class="p-float-label">
               <input type="password" formControlName="password" pInputText>
-              <label>Mot de passe</label>
+              <label translate>login.connection.signInForm.form.password.label</label>
             </span>
           </div>
-          <p-button type="submit" label="Connexion" [disabled]="signInForm.invalid"></p-button>
+          <p-button type="submit" label="{{ 'login.connection.signInForm.button' | translate }}" [disabled]="signInForm.invalid"></p-button>
         </form>
       </p-tabPanel>
-      <p-tabPanel header="Inscription">
+      <p-tabPanel header="{{ 'login.connection.signUpForm.tabHeader' | translate }}">
         <form class="p-fluid p-formgrid p-grid" (submit)="signUp()" [formGroup]="signUpForm">
           <div class="p-field p-col-12 p-md-6">
             <span class="p-float-label">
               <input type="text" formControlName="firstName" pInputText>
-              <label>Prénom</label>
+              <label translate>login.connection.signUpForm.form.firstName.label</label>
             </span>
           </div>
           <div class="p-field p-col-12 p-md-6">
             <span class="p-float-label">
               <input type="text" formControlName="lastName" pInputText>
-              <label>Nom</label>
+              <label translate>login.connection.signUpForm.form.lastName.label</label>
             </span>
           </div>
           <div class="p-field p-col-12">
             <span class="p-float-label">
               <input type="text" formControlName="email" pInputText>
-              <label>Email</label>
+              <label translate>login.connection.signUpForm.form.email.label</label>
             </span>
-            <small class="p-invalid" *ngIf="signUpForm.get('email').hasError('emailExists')">Adresse mail déjà utilisée</small>
+            <small class="p-invalid" *ngIf="signUpForm.get('email').hasError('emailExists')" translate>
+              login.connection.signUpForm.form.email.error
+            </small>
           </div>
-          <p-button class="p-col-12" type="submit" label="Inscription" [disabled]="signUpForm.invalid"></p-button>
+          <p-button class="p-col-12" type="submit" label="{{ 'login.connection.signUpForm.button' | translate }}" [disabled]="signUpForm.invalid"></p-button>
         </form>
       </p-tabPanel>
     </p-tabView>

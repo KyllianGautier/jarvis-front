@@ -1,14 +1,14 @@
 <div id="module-container">
   <p-tabView>
-    <p-tabPanel header="Demandes d'inscription">
-      <p-table [value]="signUpRequests" [paginator]="true" [rows]="maxRowPerPage" [showCurrentPageReport]="true"
-               currentPageReportTemplate="{first} à {last} de {totalRecords} demandes">
+    <p-tabPanel [header]="'home.administration.users.tabHeader' | translate"></p-tabPanel>
+    <p-tabPanel [header]="'home.administration.signUpRequests.tabHeader' | translate">
+      <p-table [value]="signUpRequests" [paginator]="true" [rows]="maxRowPerPage" [showCurrentPageReport]="true" currentPageReportTemplate="">
         <ng-template pTemplate="header">
           <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Email</th>
-            <th>Date d'inscription</th>
+            <th translate>home.administration.signUpRequests.table.header.firstName</th>
+            <th translate>home.administration.signUpRequests.table.header.lastName</th>
+            <th translate>home.administration.signUpRequests.table.header.email</th>
+            <th translate>home.administration.signUpRequests.table.header.submitDate</th>
             <th></th>
           </tr>
         </ng-template>
@@ -22,7 +22,7 @@
               <p-button
                 pRipple
                 type="button"
-                label="Accepter"
+                [label]="'home.administration.signUpRequests.table.body.acceptButton' | translate"
                 icon="pi pi-check"
                 (onClick)="acceptSignUpRequest(signUpRequest.id)"
                 styleClass="p-button-raised p-button-success p-button-text" class="p-mr-3">
@@ -30,7 +30,7 @@
               <p-button
                 pRipple
                 type="button"
-                label="Rejeter"
+                [label]="'home.administration.signUpRequests.table.body.rejectButton' | translate"
                 icon="pi pi-times"
                 (onClick)="rejectSignUpRequest(signUpRequest.id)"
                 styleClass="p-button-raised p-button-danger p-button-text" class="p-mr-3">
@@ -40,8 +40,7 @@
         </ng-template>
       </p-table>
     </p-tabPanel>
-    <p-tabPanel header="Inscrits"></p-tabPanel>
-    <p-tabPanel header="Droits"></p-tabPanel>
-    <p-tabPanel header="Paramètres"></p-tabPanel>
+    <p-tabPanel [header]="'home.administration.privileges.tabHeader' | translate"></p-tabPanel>
+    <p-tabPanel [header]="'home.administration.settings.tabHeader' | translate"></p-tabPanel>
   </p-tabView>
 </div>

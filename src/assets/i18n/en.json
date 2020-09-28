@@ -1,0 +1,97 @@
+{
+  "login": {
+    "connection": {
+      "welcomeMessage": "Welcome to {{ appName }}",
+      "signInForm": {
+        "tabHeader": "Member login",
+        "form": {
+          "email": {
+            "label": "Email"
+          },
+          "password": {
+            "label": "Password"
+          }
+        },
+        "button": "Sign in",
+        "errorMessage": {
+          "summary": "Connection refused",
+          "detail": "Wrong email or password"
+        }
+      },
+      "signUpForm": {
+        "tabHeader": "Join us",
+        "form": {
+          "firstName": {
+            "label": "First name"
+          },
+          "lastName": {
+            "label": "Last name"
+          },
+          "email": {
+            "label": "Email",
+            "error": "Email is already used"
+          }
+        },
+        "button": "Send request",
+        "successMessage": {
+          "summary": "Request sent",
+          "detail": "Your request will be treated as soon as possible"
+        }
+      }
+    }
+  },
+  "home": {
+    "header": {
+      "navMenu": {
+        "notes": "Notes",
+        "tasks": "Tasks",
+        "to-watch": "Movies & TV shows",
+        "administration": "Administration"
+      },
+      "userMenu": {
+        "settings": "Settings",
+        "signOut": "Sign out"
+      }
+    },
+    "notes": {
+
+    },
+    "tasks": {
+
+    },
+    "to-watch": {
+
+    },
+    "administration": {
+      "users": {
+        "tabHeader": "Users"
+      },
+      "signUpRequests": {
+        "tabHeader": "Sign up Requests",
+        "table": {
+          "header": {
+            "firstName": "First name",
+            "lastName": "Last name",
+            "email": "Email",
+            "submitDate": "Submit date"
+          },
+          "body": {
+            "acceptButton": "Accept",
+            "rejectButton": "Reject"
+          },
+          "footer": {
+            "pagingTemplate": "{first} to {last} of {totalRecords} requests"
+          }
+        },
+        "acceptMessage": "The request has been accepted",
+        "rejectMessage": "The request has been rejected"
+      },
+      "privileges": {
+        "tabHeader": "Privileges"
+      },
+      "settings": {
+        "tabHeader": "Settings"
+      }
+    }
+  }
+}
