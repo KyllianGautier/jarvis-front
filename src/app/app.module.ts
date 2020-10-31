@@ -13,9 +13,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TabViewModule } from 'primeng/tabview';
 import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { MenuModule } from 'primeng/menu';
 import { RippleModule } from 'primeng/ripple';
@@ -29,6 +29,22 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { registerLocaleData } from '@angular/common';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TaskFormComponent } from './shared/components/task-form/task-form.component';
+import {CheckboxModule} from 'primeng/checkbox';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { SliderModule } from 'primeng/slider';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {CalendarModule} from 'primeng/calendar';
+import {ToolbarModule} from 'primeng/toolbar';
+import {CardModule} from 'primeng/card';
+import {ToggleButtonModule} from 'primeng/togglebutton';
+import {ChipsModule} from 'primeng/chips';
+import {TooltipModule} from 'primeng/tooltip';
+import {DropdownModule} from 'primeng/dropdown';
+import { LoadingComponent } from './shared/components/loading/loading.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import { JarvisFontDirective } from './shared/directives/jarvis-font/jarvis-font.directive';
+import { AccountActivationComponent } from './login/account-activation/account-activation.component';
 
 registerLocaleData(localeFr);
 
@@ -46,14 +62,18 @@ export function createTranslateLoader(http: HttpClient) {
     TasksComponent,
     ToWatchComponent,
     AdministrationComponent,
-    ProfileComponent
+    ProfileComponent,
+    TaskFormComponent,
+    LoadingComponent,
+    JarvisFontDirective,
+    AccountActivationComponent
   ],
   imports: [
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: createTranslateLoader, // exported factory function needed for AoT compilation
-        deps: [ HttpClient ]
+        deps: [HttpClient]
       }
     }),
     HttpClientModule,
@@ -64,16 +84,28 @@ export function createTranslateLoader(http: HttpClient) {
     TabViewModule,
     PanelModule,
     ButtonModule,
+    CheckboxModule,
     ReactiveFormsModule,
+    FormsModule,
     ToastModule,
     MenuModule,
     RippleModule,
     TableModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    InputTextareaModule,
+    SliderModule,
+    SelectButtonModule,
+    CalendarModule,
+    ToolbarModule,
+    CardModule,
+    ToggleButtonModule,
+    ChipsModule,
+    TooltipModule,
+    DropdownModule,
+    FlexLayoutModule
   ],
   providers: [
     UserConnectionGuard,
-    FormBuilder,
     MessageService,
     {
       provide: LOCALE_ID,

@@ -1,7 +1,7 @@
 {
   "login": {
+    "welcomeMessage": "{{ appName }}",
     "connection": {
-      "welcomeMessage": "Welcome to {{ appName }}",
       "signInForm": {
         "tabHeader": "Member login",
         "form": {
@@ -38,6 +38,49 @@
           "detail": "Your request will be treated as soon as possible"
         }
       }
+    },
+    "accountActivation": {
+      "accountActivationForm": {
+        "helpMessage": "Please chose a password",
+        "form": {
+          "email": {
+            "label": "Email"
+          },
+          "password": {
+            "label": "Password"
+          },
+          "passwordConfirmation": {
+            "label": "Password Confirmation",
+            "error": "Passwords are different"
+          }
+        },
+        "button": "Set password",
+        "successMessage": {
+          "summary": "Password set",
+          "detail": "Your password has been set"
+        },
+        "errorMessage": {
+          "summary": "Error",
+          "detail": "An error was encountered"
+        }
+      },
+      "tokenNotValid": {
+        "message": "Your token is expired. Click the link below to ask for new one.",
+        "buttonBack": {
+          "label": "Back to login"
+        },
+        "buttonNewToken": {
+          "label": "Send me a new one",
+          "success": {
+            "summary": "A new token has been sent",
+            "detail": "Check up your email inbox"
+          },
+          "error": {
+            "summary": "Wrong email",
+            "detail": "Can't send a new token on this email"
+          }
+        }
+      }
     }
   },
   "home": {
@@ -57,7 +100,46 @@
 
     },
     "tasks": {
-
+      "createForm": {
+        "label": {
+          "label": "New task"
+        },
+        "description": {
+          "label": "Description"
+        },
+        "subtasks": {
+          "label": "Subtasks"
+        },
+        "tags": {
+          "label": "Tags"
+        },
+        "priority": {
+          "label": "Priority",
+          "values": {
+            "none": "None",
+            "low": "Low",
+            "medium": "Medium",
+            "high": "High"
+          }
+        },
+        "pinned": {
+          "label": "Pinned"
+        },
+        "expirationDate": {
+          "label": "Expiration date"
+        },
+        "remindingDate": {
+          "label": "Reminding date"
+        },
+        "share": {
+          "label": "Share"
+        },
+        "collection": {
+          "label": "Collection"
+        },
+        "cancelButton": "Cancel",
+        "confirmButton": "Create"
+      }
     },
     "to-watch": {
 

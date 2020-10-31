@@ -1,2 +1,5 @@
 <p-toast></p-toast>
-<router-outlet></router-outlet>
+<router-outlet *ngIf="translationLoaded else loadingScreen"></router-outlet>
+<ng-template #loadingScreen>
+  <app-loading></app-loading>
+</ng-template>

@@ -24,7 +24,7 @@ export class AuthenticationService {
   }
 
   public checkEmailValidity(email: string): Observable<boolean> {
-    return this.http.post<boolean>(paths.API_PATH + paths.AUTHENTICATION_CHECK_EMAIL_VALIDITY, { email: email });
+    return this.http.post<boolean>(paths.API_PATH + paths.AUTHENTICATION_CHECK_EMAIL_VALIDITY, { email });
   }
 
   public getSignUpRequests(): Observable<SignUpRequest[]> {
@@ -50,12 +50,24 @@ export class AuthenticationService {
     );
   }
 
+  public checkTokenValidity(email: string, token: string): Observable<boolean> {
+    return this.http.post<boolean>(paths.API_PATH + paths.AUTHENTICATION_CHECK_TOKEN_VALIDITY, { email, token });
+  }
+
+  public getNewAccountActivationToken(email: string): Observable<void> {
+    return this.http.post<null>(paths.API_PATH + paths.AUTHENTICATION_NEW_TOKEN, { email });
+  }
+
+  public activateAccount(activationData: any): Observable<void> {
+    return this.http.post<void>(paths.API_PATH + paths.AUTHENTICATION_ACTIVATE_ACCOUNT, activationData);
+  }
+
   public signIn(signInRequest: any): Observable<SignInResponse> {
     return this.http.post<SignInResponse>(paths.API_PATH + paths.AUTHENTICATION_SIGN_IN, signInRequest)
       .pipe(
-        map(auth => {
-          this.tokenStorageService.storeToken(auth);
-          return auth;
+        map(authentication => {
+          this.tokenStorageService.storeToken(authentication);
+          return authentication;
         })
       );
   }
@@ -66,6 +78,10 @@ export class AuthenticationService {
 
   public getSignedInUser(): User {
     return this.tokenStorageService.getUser();
+  }
+
+  public isSignedInUserAdministrator() {
+    return this.tokenStorageService.isAdministrator();
   }
 
   public signOut(): void {

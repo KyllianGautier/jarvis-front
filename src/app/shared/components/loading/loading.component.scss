@@ -1,0 +1,8 @@
+@import 'src/assets/theme/global-variables';
+
+#loading-container {
+  background-color: $global-primary-bkg-color;
+
+  width: 100vw;
+  height: 100vh;
+}

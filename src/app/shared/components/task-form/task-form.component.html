@@ -1,0 +1,72 @@
+<div class="p-card p-p-3">
+  <form [formGroup]="taskForm">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-11 task-checkbox-input-field">
+        <p-checkbox #ckb formControlName="checked" [binary]="true"></p-checkbox>
+        <input type="text" formControlName="label" placeholder="Nouvelle tâche" [ngClass]="{ 'global-text-line-through': ckb.checked }">
+      </div>
+      <div class="p-field p-col-1 p-text-center">
+        <i class="pi pi-heart" style="font-size: 20px" *ngIf="taskForm.get('pinned').value"></i>
+      </div>
+      <div class="p-col-12" *ngIf="showSection['subtasks']">
+        <div class="subtask-checkbox-input-field">
+          <p-checkbox #ckb formControlName="checked" [binary]="true"></p-checkbox>
+          <input type="text" formControlName="label" placeholder="Sous-tâche" [ngClass]="{ 'global-text-line-through': ckb.checked }">
+        </div>
+      </div>
+      <div class="p-field p-col-12" *ngIf="showSection['description']">
+        <label for="description-textarea" translate>home.tasks.createForm.description.label</label>
+        <textarea id="description-textarea" formControlName="description" pInputTextarea></textarea>
+      </div>
+      <div class="p-field p-col-12" *ngIf="showSection['tags']">
+        <label for="description-textarea" translate>home.tasks.createForm.tags.label</label>
+        <p-chips formControlName="tags">
+          <ng-template let-item pTemplate="item">
+            <i class="pi pi-tag p-mr-2"></i> {{ item }}
+          </ng-template>
+        </p-chips>
+      </div>
+      <div class="p-field p-col-12" *ngIf="showSection['priority']">
+        <label translate>home.tasks.createForm.priority.label</label>
+        <p-selectButton formControlName="priority" [options]="priorityOptions"></p-selectButton>
+      </div>
+      <div class="p-field p-col-12" *ngIf="showSection['remindingDate']">
+        <label translate>home.tasks.createForm.remindingDate.label</label>
+        <p-calendar class="p-inputtext-sm" formControlName="remindingDate" [showTime]="true"></p-calendar>
+      </div>
+      <div class="p-field p-col-12" *ngIf="showSection['expirationDate']">
+        <label translate>home.tasks.createForm.expirationDate.label</label>
+        <p-calendar class="p-inputtext-sm" formControlName="expirationDate" [showTime]="true"></p-calendar>
+      </div>
+      <div class="p-field p-col-12" *ngIf="showSection['collection']">
+        <label translate>home.tasks.createForm.collection.label</label>
+        <p-dropdown formControlName="collection" [filter]="true" [options]="collectionOptions"></p-dropdown>
+      </div>
+    </div>
+    <div>
+      <span *ngFor="let button of optionButtons">
+        <p-button
+          pRipple
+          type="button"
+          *ngIf="!showSection[button.name]"
+          [icon]="button.icon"
+          [pTooltip]="button.tooltip | translate"
+          tooltipPosition="bottom"
+          (onClick)="showSection[button.name] = true"
+          styleClass="p-button-rounded p-button-text"></p-button>
+      </span>
+      <p-button
+        pRipple
+        type="button"
+        icon="pi pi-heart"
+        pTooltip="Favourite"
+        tooltipPosition="bottom"
+        (onClick)="taskForm.get('pinned').setValue(!taskForm.get('pinned').value)"
+        styleClass="p-button-rounded p-button-text"></p-button>
+    </div>
+    <div class="p-text-right">
+      <p-button [label]="'home.tasks.createForm.cancelButton' | translate" styleClass="p-button-text" class="p-mr-2"></p-button>
+      <p-button [label]="'home.tasks.createForm.confirmButton' | translate"></p-button>
+    </div>
+  </form>
+</div>

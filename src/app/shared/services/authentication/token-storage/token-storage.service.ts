@@ -9,24 +9,24 @@ export class TokenStorageService {
 
   constructor() { }
 
-  public storeToken(auth: SignInResponse): void {
-    window.localStorage.setItem(TOKEN_KEY, JSON.stringify(auth));
+  public storeToken(authentication: SignInResponse): void {
+    window.localStorage.setItem(TOKEN_KEY, JSON.stringify(authentication));
   }
 
   public getToken(): string {
-    const session = window.localStorage.getItem(TOKEN_KEY);
-    return (session) ? JSON.parse(session).token : session;
+    return this.getStoredAuthentication().token;
+  }
+
+  public isAdministrator(): boolean {
+    return this.getStoredAuthentication().admin;
   }
 
   public getUser(): User {
-    return JSON.parse(
-      window.localStorage
-        .getItem(TOKEN_KEY)
-    ).user;
+    return this.getStoredAuthentication().user;
   }
 
   public setUser(user: User): void {
-    const auth = JSON.parse(window.localStorage.getItem(TOKEN_KEY));
+    const auth = this.getStoredAuthentication();
     if (auth) {
       auth.user = user;
       window.localStorage.setItem(TOKEN_KEY, JSON.stringify(auth));
@@ -39,5 +39,9 @@ export class TokenStorageService {
 
   public isTokenStored(): boolean {
     return window.localStorage.getItem(TOKEN_KEY) !== null;
+  }
+
+  private getStoredAuthentication(): SignInResponse {
+    return JSON.parse(window.localStorage.getItem(TOKEN_KEY));
   }
 }

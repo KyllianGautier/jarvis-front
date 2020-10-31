@@ -1,4 +1,10 @@
+// Import variables :
+@import "login-theme-variables";
 
+
+// ----------------------------------------
+// LOGIN LAYOUT :
+// ----------------------------------------
 
 #login-wallpaper {
   background: url("../../images/login_background.jpg") no-repeat center;
@@ -12,5 +18,13 @@
   #login-section {
     display: block;
     width: 500px;
+
+    #welcome-message {
+      display: block;
+      text-align: center;
+      margin-top: unset;
+      margin-bottom: $login-layout-logo-spacing;
+      font-size: $login-layout-logo-font-size;
+    }
   }
 }

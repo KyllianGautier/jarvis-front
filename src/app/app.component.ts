@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
+import {delay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,18 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'jarvis-front';
+  title: string;
+
+  translationLoaded: boolean;
 
   constructor(translate: TranslateService) {
+    this.title = 'jarvis-front';
+
+    this.translationLoaded = false;
+
     translate.addLangs(['en']);
     translate.setDefaultLang('en');
-    translate.use('en');
+    translate.use('en')
+      .subscribe(() => this.translationLoaded = true);
   }
 }

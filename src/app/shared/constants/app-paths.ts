@@ -1,6 +1,7 @@
 export const paths = {
   HOME: '',
   LOGIN: 'login',
+  ACCOUNT_ACTIVATION: 'account-activation',
   NOTES: 'notes',
   TASKS: 'tasks',
   TO_WATCH: 'to-watch',

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import {AuthenticationService} from '../shared/services/authentication/authentication.service';
-import {Router} from '@angular/router';
-import {TranslateService} from '@ngx-translate/core';
+import { AuthenticationService } from '../shared/services/authentication/authentication.service';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import {paths} from '../shared/constants/app-paths';
 
 @Component({
   selector: 'app-home',
@@ -29,18 +30,27 @@ export class HomeComponent implements OnInit {
     this.navItems = [
       { label: 'home.header.navMenu.notes', routerLink: 'notes', icon: 'pi pi-pencil' },
       { label: 'home.header.navMenu.tasks', routerLink: 'tasks', icon: 'pi pi-check-circle' },
-      { label: 'home.header.navMenu.to-watch', routerLink: 'to-watch', icon: 'pi pi-desktop' },
-      { label: 'home.header.navMenu.administration', routerLink: 'administration', icon: 'pi pi-briefcase' }
+      { label: 'home.header.navMenu.to-watch', routerLink: 'to-watch', icon: 'pi pi-desktop' }
     ];
 
+    if (this.authenticationService.isSignedInUserAdministrator()) {
+      this.navItems.push({ label: 'home.header.navMenu.administration', routerLink: 'administration', icon: 'pi pi-briefcase' });
+    }
+
     this.userMenuItems = [
-      { label: 'Paramètres', routerLink: '', icon: 'pi pi-cog', command: () => this.router.navigate(['/profile']) },
-      { label: 'Déconnexion', routerLink: '', icon: 'pi pi-sign-out', command: () => this.signOut() },
+      {
+        label: this.translate.instant('home.header.userMenu.settings'),
+        routerLink: '', icon: 'pi pi-cog', command: () => this.router.navigate(['/profile'])
+      },
+      {
+        label: this.translate.instant('home.header.userMenu.signOut'),
+        routerLink: '', icon: 'pi pi-sign-out', command: () => this.signOut()
+      },
     ];
   }
 
   public signOut(): void {
     this.authenticationService.signOut();
-    this.router.navigate(['/login']);
+    this.router.navigate([paths.LOGIN]);
   }
 }

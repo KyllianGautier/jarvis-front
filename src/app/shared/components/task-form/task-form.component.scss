@@ -1,0 +1,48 @@
+@import "src/assets/theme/global-variables";
+
+.task-checkbox-input-field {
+  position: relative;
+
+  > p-checkbox {
+    position: absolute;
+    left: $global-spacing-large;
+    top: $global-spacing-large;
+  }
+
+  > input {
+    background: none;
+    border: none;
+    padding: $global-spacing $global-spacing $global-spacing 48px;
+    color: $global-primary-font-color;
+    font-size: 24px;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.subtask-checkbox-input-field {
+  position: relative;
+  padding-left: 48px;
+
+  > p-checkbox {
+    position: absolute;
+    left: $global-spacing + 46px;
+    top: $global-spacing-small + 2px;
+  }
+
+  > input {
+    background: none;
+    border: none;
+    padding: $global-spacing-small $global-spacing $global-spacing-small 48px;
+    color: $global-primary-font-color;
+    font-size: 18px;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

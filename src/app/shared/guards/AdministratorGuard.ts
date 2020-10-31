@@ -6,7 +6,7 @@ import {paths} from '../constants/app-paths';
 @Injectable({
   providedIn: 'root'
 })
-export class UserConnectionGuard implements CanActivate, CanActivateChild {
+export class AdministratorGuard implements CanActivate, CanActivateChild {
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -14,8 +14,8 @@ export class UserConnectionGuard implements CanActivate, CanActivateChild {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (!this.authenticationService.isSignedIn()) {
-      this.router.navigate([paths.LOGIN]);
+    if (!this.authenticationService.isSignedInUserAdministrator()) {
+      this.router.navigate([paths.HOME]);
       return false;
     }
     return true;

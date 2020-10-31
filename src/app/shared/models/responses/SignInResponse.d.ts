@@ -1,6 +1,6 @@
 interface SignInResponse {
   token: string;
   refreshToken: string;
-  isAdmin: boolean;
+  admin: boolean;
   user: User;
 }

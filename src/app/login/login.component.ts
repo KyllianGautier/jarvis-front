@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { AuthenticationService } from '../shared/services/authentication/authentication.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import {paths} from '../shared/constants/app-paths';
 
 @Component({
   selector: 'app-login',
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  emailAsyncValidator = (authenticationService: AuthenticationService) => {
+  public emailAsyncValidator = (authenticationService: AuthenticationService) => {
     return (control) => {
       return authenticationService.checkEmailValidity(control.value)
         .pipe(
@@ -53,7 +54,7 @@ export class LoginComponent implements OnInit {
       this.authenticationService.signIn(this.signInForm.value)
         .subscribe(
           auth => {
-            this.router.navigate(['/']);
+            this.router.navigate([paths.HOME]);
           },
           error => {
             this.messageService.add({

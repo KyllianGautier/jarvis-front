@@ -1,0 +1,44 @@
+<div id="login-wallpaper" *ngIf="tokenVerified !== undefined else loadingScreen">
+  <p-panel id="login-section">
+    <h1 id="welcome-message" appJarvisFont>
+      {{ 'login.welcomeMessage' | translate: { appName: 'Jarvis' } }}
+    </h1>
+    <form *ngIf="tokenVerified else refreshTokenSection" (submit)="activateAccount()" [formGroup]="accountActivationForm" class="p-fluid">
+      <p translate>login.accountActivation.accountActivationForm.helpMessage</p>
+      <div class="p-field">
+        <span class="p-float-label">
+          <input type="password" formControlName="password" pInputText>
+          <label translate>login.accountActivation.accountActivationForm.form.password.label</label>
+        </span>
+      </div>
+      <div class="p-field">
+        <span class="p-float-label">
+          <input type="password" formControlName="passwordConfirmation" pInputText>
+          <label translate>login.accountActivation.accountActivationForm.form.passwordConfirmation.label</label>
+        </span>
+        <small class="p-invalid" *ngIf="accountActivationForm.hasError('notSame') && accountActivationForm.get('passwordConfirmation').dirty" translate>
+          login.accountActivation.accountActivationForm.form.passwordConfirmation.error
+        </small>
+      </div>
+      <p-button pRipple type="submit" label="{{ 'login.accountActivation.accountActivationForm.button' | translate }}" [disabled]="accountActivationForm.invalid"></p-button>
+    </form>
+  </p-panel>
+</div>
+
+<ng-template #refreshTokenSection>
+  <p translate>login.accountActivation.tokenNotValid.message</p>
+  <form [formGroup]="newAccountActivationTokenForm" class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-12">
+      <span class="p-float-label">
+      <input type="text" formControlName="email" pInputText>
+      <label translate>login.accountActivation.accountActivationForm.form.passwordConfirmation.label</label>
+    </span>
+    </div>
+    <p-button pRipple type="button" (onClick)="backToLogin()" [label]="'login.accountActivation.tokenNotValid.buttonBack.label' | translate" class="p-button-outlined p-col-6"></p-button>
+    <p-button pRipple type="submit" (onClick)="sendNewToken()" [label]="'login.accountActivation.tokenNotValid.buttonNewToken.label' | translate" class="p-col-6" [disabled]="newAccountActivationTokenForm.invalid"></p-button>
+  </form>
+</ng-template>
+
+<ng-template #loadingScreen>
+  <app-loading></app-loading>
+</ng-template>
