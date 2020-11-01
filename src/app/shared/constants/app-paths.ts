@@ -1,4 +1,4 @@
-export const paths = {
+export const appPaths = {
   HOME: '',
   LOGIN: 'login',
   ACCOUNT_ACTIVATION: 'account-activation',

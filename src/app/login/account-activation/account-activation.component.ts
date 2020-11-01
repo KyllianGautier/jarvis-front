@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
 import { mergeMap } from 'rxjs/operators';
-import {paths} from '../../shared/constants/app-paths';
-import {MessageService} from 'primeng/api';
-import {TranslateService} from '@ngx-translate/core';
-import { forkJoin } from 'rxjs';
-import {ClientService} from '../../shared/services/client/client.service';
+import { appPaths } from '../../shared/constants/app-paths';
+import { MessageService } from 'primeng/api';
+import { TranslateService } from '@ngx-translate/core';
+import { ClientService } from '../../shared/services/client/client.service';
+import { appConstants } from '../../shared/constants/app-constants';
 
 @Component({
   selector: 'app-account-activation',
@@ -16,9 +16,10 @@ import {ClientService} from '../../shared/services/client/client.service';
 })
 export class AccountActivationComponent implements OnInit {
 
+  public appName: string;
+
   public tokenVerified: boolean | undefined;
 
-  public activationToken: string;
   public accountActivationForm: FormGroup;
   public newAccountActivationTokenForm: FormGroup;
 
@@ -31,6 +32,7 @@ export class AccountActivationComponent implements OnInit {
     private messageService: MessageService,
     private translate: TranslateService
   ) {
+    this.appName = appConstants.APP_NAME;
     this.tokenVerified = undefined;
   }
 
@@ -40,7 +42,6 @@ export class AccountActivationComponent implements OnInit {
       token: [null, [ Validators.required ]],
       password: ['', [ Validators.required ]],
       passwordConfirmation: ['', [ Validators.required ]],
-      publicIp: [null, [ Validators.required ]],
       deviceType: ['devicetype', [ Validators.required ]]
     }, { validators: this.checkPasswords });
 
@@ -53,21 +54,11 @@ export class AccountActivationComponent implements OnInit {
         this.accountActivationForm.get('token').setValue(params.token);
         this.accountActivationForm.get('email').setValue(params.email);
         this.newAccountActivationTokenForm.get('email').setValue(params.email);
-        return forkJoin({
-          publicIp: this.clientService.getPublicIp(),
-          isTokenVerified: this.authenticationService.checkTokenValidity(params.email, params.token)
-        });
+        return this.authenticationService.checkTokenValidity(params.email, params.token);
       }))
       .subscribe(
-        results => {
-          console.log(results);
-          this.accountActivationForm.get('publicIp').setValue(results.publicIp.ip);
-          this.tokenVerified = results.isTokenVerified;
-        },
-        err => {
-          console.error(err);
-          this.tokenVerified = false;
-        }
+        tokenValidity => this.tokenVerified = tokenValidity,
+        err => this.tokenVerified = false
       );
   }
 
@@ -88,7 +79,7 @@ export class AccountActivationComponent implements OnInit {
               summary: this.translate.instant('login.accountActivation.accountActivationForm.successMessage.summary'),
               detail: this.translate.instant('login.accountActivation.accountActivationForm.successMessage.detail')
             });
-            this.router.navigate([paths.LOGIN]);
+            this.router.navigate([appPaths.LOGIN]);
           },
           error => this.messageService.add({
             severity: 'error',
@@ -100,7 +91,7 @@ export class AccountActivationComponent implements OnInit {
   }
 
   public backToLogin(): void {
-    this.router.navigate([paths.LOGIN]);
+    this.router.navigate([appPaths.LOGIN]);
   }
 
   public sendNewToken(): void {

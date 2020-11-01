@@ -14,9 +14,6 @@
   height: 100%;
 
   #app-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     user-select: none;
 
     background-color: $home-layout-header-bkg-color;
@@ -30,11 +27,6 @@
 
     .app-header-nav-button {
       margin-right: $global-spacing;
-    }
-
-    #app-header-user-menu {
-      position: absolute;
-      right: $global-spacing;
     }
   }
 

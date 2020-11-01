@@ -1,7 +1,7 @@
-import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router';
-import {AuthenticationService} from '../services/authentication/authentication.service';
-import {Injectable} from '@angular/core';
-import {paths} from '../constants/app-paths';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
+import { AuthenticationService } from '../services/authentication/authentication.service';
+import { Injectable } from '@angular/core';
+import { appPaths } from '../constants/app-paths';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class UserConnectionGuard implements CanActivate, CanActivateChild {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (!this.authenticationService.isSignedIn()) {
-      this.router.navigate([paths.LOGIN]);
+      this.router.navigate([appPaths.LOGIN]);
       return false;
     }
     return true;

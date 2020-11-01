@@ -1,10 +1,9 @@
 <div id="home-container">
-  <div id="app-header">
+  <div id="app-header" fxLayout="row" fxLayoutAlign="start center">
     <img src="" alt="">
-    <span id="app-header-text">Jarvis</span>
+    <span id="app-header-text" appJarvisFont>{{ appName }}</span>
     <p-button
       class="app-header-nav-button"
-      pRipple
       *ngFor="let item of navItems"
       [routerLink]="item.routerLink"
       routerLinkActive
@@ -13,7 +12,15 @@
       [label]="item.label | translate"
       [icon]="item.icon">
     </p-button>
-    <p-button pRipple id="app-header-user-menu" (onClick)="userMenu.toggle($event)" styleClass="p-button-outlined" [label]="signedInUser.firstName" icon="pi pi-angle-down" iconPos="right"></p-button>
+    <span fxFlex></span>
+    <p-button
+      id="app-header-user-menu"
+      (onClick)="userMenu.toggle($event)"
+      styleClass="p-button-outlined"
+      [label]="signedInUser.firstName"
+      icon="pi pi-angle-down"
+      iconPos="right">
+    </p-button>
     <p-menu #userMenu [popup]="true" [model]="userMenuItems"></p-menu>
   </div>
   <div id="app-content">

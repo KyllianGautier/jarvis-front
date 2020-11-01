@@ -1,7 +1,7 @@
 import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router';
 import {AuthenticationService} from '../services/authentication/authentication.service';
 import {Injectable} from '@angular/core';
-import {paths} from '../constants/app-paths';
+import { appPaths} from '../constants/app-paths';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class AdministratorGuard implements CanActivate, CanActivateChild {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (!this.authenticationService.isSignedInUserAdministrator()) {
-      this.router.navigate([paths.HOME]);
+      this.router.navigate([appPaths.HOME]);
       return false;
     }
     return true;

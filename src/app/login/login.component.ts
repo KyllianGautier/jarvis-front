@@ -1,11 +1,13 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { AuthenticationService } from '../shared/services/authentication/authentication.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
-import {paths} from '../shared/constants/app-paths';
+import { appPaths } from '../shared/constants/app-paths';
+import { appConstants } from '../shared/constants/app-constants';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-login',
@@ -14,16 +16,27 @@ import {paths} from '../shared/constants/app-paths';
 })
 export class LoginComponent implements OnInit {
 
-  signInForm: FormGroup;
-  signUpForm: FormGroup;
+  public appName: string;
+
+  public deviceValidation: boolean;
+
+  public signInForm: FormGroup;
+  public signUpForm: FormGroup;
+  public deviceValidationForm: FormGroup;
+
+  public deviceInfos;
 
   constructor(
     private authenticationService: AuthenticationService,
     private formBuilder: FormBuilder,
     private messageService: MessageService,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private deviceService: DeviceDetectorService
   ) {
+    this.appName = appConstants.APP_NAME;
+    this.deviceValidation = false;
+
     this.signInForm = formBuilder.group({
       email: ['', [ Validators.email, Validators.required ]],
       password: ['', [ Validators.required ]]
@@ -33,6 +46,12 @@ export class LoginComponent implements OnInit {
       firstName: ['', [ Validators.required ]],
       lastName: ['', [ Validators.required ]],
       email: ['', [ Validators.email, Validators.required ], this.emailAsyncValidator(this.authenticationService)]
+    });
+
+    this.deviceValidationForm = this.formBuilder.group({
+      deviceType: [null, [ Validators.required ]],
+      browser: [null, [ Validators.required ]],
+      secretCode: [null, [ Validators.required ]]
     });
   }
 
@@ -54,14 +73,20 @@ export class LoginComponent implements OnInit {
       this.authenticationService.signIn(this.signInForm.value)
         .subscribe(
           auth => {
-            this.router.navigate([paths.HOME]);
+            this.router.navigate([appPaths.HOME]);
           },
-          error => {
-            this.messageService.add({
-              severity: 'error',
-              summary: this.translate.instant('login.connection.signInForm.errorMessage.summary'),
-              detail: this.translate.instant('login.connection.signInForm.errorMessage.detail')
-            });
+          err => {
+            if (err.status === 403) {
+              this.deviceValidation = true;
+              this.deviceValidationForm.get('deviceType').setValue(this.deviceService.os);
+              this.deviceValidationForm.get('browser').setValue(this.deviceService.browser);
+            } else {
+              this.messageService.add({
+                severity: 'error',
+                summary: this.translate.instant('login.connection.signInForm.errorMessage.summary'),
+                detail: this.translate.instant('login.connection.signInForm.errorMessage.detail')
+              });
+            }
           }
         );
     }
@@ -81,5 +106,9 @@ export class LoginComponent implements OnInit {
           },
             error => console.error(error));
     }
+  }
+
+  public validateDevice(): void {
+
   }
 }

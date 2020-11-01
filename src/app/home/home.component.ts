@@ -3,7 +3,8 @@ import { MenuItem } from 'primeng/api';
 import { AuthenticationService } from '../shared/services/authentication/authentication.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import {paths} from '../shared/constants/app-paths';
+import { appPaths } from '../shared/constants/app-paths';
+import { appConstants } from '../shared/constants/app-constants';
 
 @Component({
   selector: 'app-home',
@@ -12,17 +13,19 @@ import {paths} from '../shared/constants/app-paths';
 })
 export class HomeComponent implements OnInit {
 
+  public appName: string;
+
   public signedInUser: User;
-
   public navItems: MenuItem[];
-
   public userMenuItems: MenuItem[];
 
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router,
     private translate: TranslateService
-  ) {}
+  ) {
+    this.appName = appConstants.APP_NAME;
+  }
 
   ngOnInit() {
     this.signedInUser = this.authenticationService.getSignedInUser();
@@ -51,6 +54,6 @@ export class HomeComponent implements OnInit {
 
   public signOut(): void {
     this.authenticationService.signOut();
-    this.router.navigate([paths.LOGIN]);
+    this.router.navigate([appPaths.LOGIN]);
   }
 }

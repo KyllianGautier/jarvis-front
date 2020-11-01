@@ -24,6 +24,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "getmac": "^5.17.0",
+    "ngx-device-detector": "^2.0.0",
     "os": "^0.1.1",
     "primeflex": "^2.0.0",
     "primeicons": "^4.0.0",

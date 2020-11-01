@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { appConstants } from '../../constants/app-constants';
 
 @Component({
   selector: 'app-loading',
@@ -8,7 +8,11 @@ import {Router} from '@angular/router';
 })
 export class LoadingComponent implements OnInit {
 
-  constructor() { }
+  public appName: string;
+
+  constructor() {
+    this.appName = appConstants.APP_NAME;
+  }
 
   ngOnInit(): void { }
 

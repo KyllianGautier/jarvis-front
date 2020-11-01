@@ -46,7 +46,6 @@
     <div>
       <span *ngFor="let button of optionButtons">
         <p-button
-          pRipple
           type="button"
           *ngIf="!showSection[button.name]"
           [icon]="button.icon"
@@ -56,7 +55,6 @@
           styleClass="p-button-rounded p-button-text"></p-button>
       </span>
       <p-button
-        pRipple
         type="button"
         icon="pi pi-heart"
         pTooltip="Favourite"

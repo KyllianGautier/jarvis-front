@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import {delay} from 'rxjs/operators';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,10 @@ export class AppComponent {
 
   translationLoaded: boolean;
 
-  constructor(translate: TranslateService) {
+  constructor(
+    private translate: TranslateService,
+    private primengConfig: PrimeNGConfig
+  ) {
     this.title = 'jarvis-front';
 
     this.translationLoaded = false;
@@ -21,5 +25,7 @@ export class AppComponent {
     translate.setDefaultLang('en');
     translate.use('en')
       .subscribe(() => this.translationLoaded = true);
+
+    this.primengConfig.ripple = true;
   }
 }

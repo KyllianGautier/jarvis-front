@@ -20,20 +20,18 @@
             <td>{{ signUpRequest.date | date: 'short' }}</td>
             <td>
               <p-button
-                pRipple
                 type="button"
-                [label]="'home.administration.signUpRequests.table.body.acceptButton' | translate"
+                styleClass="p-button-raised p-button-success p-button-text" class="p-mr-3"
                 icon="pi pi-check"
-                (onClick)="acceptSignUpRequest(signUpRequest.id)"
-                styleClass="p-button-raised p-button-success p-button-text" class="p-mr-3">
+                [label]="'home.administration.signUpRequests.table.body.acceptButton' | translate"
+                (onClick)="acceptSignUpRequest(signUpRequest.id)">
               </p-button>
               <p-button
-                pRipple
                 type="button"
-                [label]="'home.administration.signUpRequests.table.body.rejectButton' | translate"
+                styleClass="p-button-raised p-button-danger p-button-text" class="p-mr-3"
                 icon="pi pi-times"
-                (onClick)="rejectSignUpRequest(signUpRequest.id)"
-                styleClass="p-button-raised p-button-danger p-button-text" class="p-mr-3">
+                [label]="'home.administration.signUpRequests.table.body.rejectButton' | translate"
+                (onClick)="rejectSignUpRequest(signUpRequest.id)">
               </p-button>
             </td>
           </tr>

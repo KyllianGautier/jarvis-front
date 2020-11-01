@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { UserConnectionGuard } from './shared/guards/UserConnectionGuard';
 import { InputTextModule } from 'primeng/inputtext';
 import { TabViewModule } from 'primeng/tabview';
@@ -30,21 +30,22 @@ import { registerLocaleData } from '@angular/common';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TaskFormComponent } from './shared/components/task-form/task-form.component';
-import {CheckboxModule} from 'primeng/checkbox';
+import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SliderModule } from 'primeng/slider';
-import {SelectButtonModule} from 'primeng/selectbutton';
-import {CalendarModule} from 'primeng/calendar';
-import {ToolbarModule} from 'primeng/toolbar';
-import {CardModule} from 'primeng/card';
-import {ToggleButtonModule} from 'primeng/togglebutton';
-import {ChipsModule} from 'primeng/chips';
-import {TooltipModule} from 'primeng/tooltip';
-import {DropdownModule} from 'primeng/dropdown';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { CalendarModule } from 'primeng/calendar';
+import { ToolbarModule } from 'primeng/toolbar';
+import { CardModule } from 'primeng/card';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { ChipsModule } from 'primeng/chips';
+import { TooltipModule } from 'primeng/tooltip';
+import { DropdownModule } from 'primeng/dropdown';
 import { LoadingComponent } from './shared/components/loading/loading.component';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { JarvisFontDirective } from './shared/directives/jarvis-font/jarvis-font.directive';
 import { AccountActivationComponent } from './login/account-activation/account-activation.component';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 registerLocaleData(localeFr);
 
@@ -102,7 +103,8 @@ export function createTranslateLoader(http: HttpClient) {
     ChipsModule,
     TooltipModule,
     DropdownModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    InputNumberModule
   ],
   providers: [
     UserConnectionGuard,

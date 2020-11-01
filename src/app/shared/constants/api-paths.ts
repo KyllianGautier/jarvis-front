@@ -1,4 +1,4 @@
-export const paths = {
+export const apiPaths = {
   API_PATH: 'api/v1/',
 
   AUTHENTICATION_SIGN_UP: 'auth/sign-up',

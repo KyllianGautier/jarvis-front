@@ -14,7 +14,7 @@
         },
         "button": "Sign in",
         "errorMessage": {
-          "summary": "Connection refused",
+          "summary": "Credentials error",
           "detail": "Wrong email or password"
         }
       },
@@ -37,6 +37,14 @@
           "summary": "Request sent",
           "detail": "Your request will be treated as soon as possible"
         }
+      },
+      "deviceValidationForm": {
+        "form": {
+          "secretCode": {
+            "label": "Secret code"
+          }
+        },
+        "button": "Send code"
       }
     },
     "accountActivation": {
