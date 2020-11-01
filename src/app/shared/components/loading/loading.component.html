@@ -1,6 +1,6 @@
 <div id="loading-container" fxLayout="column" fxLayoutAlign="center center">
   <div fxLayout="column" fxLayoutAlign="start center">
     <p-progressSpinner></p-progressSpinner>
-    <h1 appJarvisFont>{{ appName }}</h1>
+    <h1 *ngIf="showLogo" appJarvisFont>{{ appName }}</h1>
   </div>
 </div>

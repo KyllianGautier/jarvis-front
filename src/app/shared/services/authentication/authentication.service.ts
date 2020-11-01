@@ -62,7 +62,7 @@ export class AuthenticationService {
     return this.http.post<void>(apiPaths.API_PATH + apiPaths.AUTHENTICATION_ACTIVATE_ACCOUNT, activationData);
   }
 
-  public signIn(signInRequest: any): Observable<SignInResponse> {
+  public signIn(signInRequest: SignInRequest): Observable<SignInResponse> {
     return this.http.post<SignInResponse>(apiPaths.API_PATH + apiPaths.AUTHENTICATION_SIGN_IN, signInRequest)
       .pipe(
         map(authentication => {

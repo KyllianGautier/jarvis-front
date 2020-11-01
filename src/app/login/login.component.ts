@@ -38,19 +38,21 @@ export class LoginComponent implements OnInit {
     this.deviceValidation = false;
 
     this.signInForm = formBuilder.group({
-      email: ['', [ Validators.email, Validators.required ]],
-      password: ['', [ Validators.required ]]
+      email: [null, [ Validators.email, Validators.required ]],
+      password: [null, [ Validators.required ]],
+      deviceType: [this.deviceService.os, [ Validators.required ]],
+      browser: [this.deviceService.browser, [ Validators.required ]]
     });
 
     this.signUpForm = formBuilder.group({
-      firstName: ['', [ Validators.required ]],
-      lastName: ['', [ Validators.required ]],
-      email: ['', [ Validators.email, Validators.required ], this.emailAsyncValidator(this.authenticationService)]
+      firstName: [null, [ Validators.required ]],
+      lastName: [null, [ Validators.required ]],
+      email: [null, [ Validators.email, Validators.required ], this.emailAsyncValidator(this.authenticationService)]
     });
 
     this.deviceValidationForm = this.formBuilder.group({
-      deviceType: [null, [ Validators.required ]],
-      browser: [null, [ Validators.required ]],
+      deviceType: [this.deviceService.os, [ Validators.required ]],
+      browser: [this.deviceService.browser, [ Validators.required ]],
       secretCode: [null, [ Validators.required ]]
     });
   }
@@ -78,8 +80,6 @@ export class LoginComponent implements OnInit {
           err => {
             if (err.status === 403) {
               this.deviceValidation = true;
-              this.deviceValidationForm.get('deviceType').setValue(this.deviceService.os);
-              this.deviceValidationForm.get('browser').setValue(this.deviceService.browser);
             } else {
               this.messageService.add({
                 severity: 'error',

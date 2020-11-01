@@ -100,8 +100,27 @@
         "administration": "Administration"
       },
       "userMenu": {
-        "settings": "Settings",
+        "profile": "Profile",
         "signOut": "Sign out"
+      }
+    },
+    "profile": {
+      "informations": {
+        "tabHeader": "Informations"
+      },
+      "devicesAndConnections": {
+        "tabHeader": "Devices & connections",
+        "table": {
+          "header": {
+            "type": "Device",
+            "ip": "IP address",
+            "verified": "Status",
+            "connections": "Connections"
+          }
+        }
+      },
+      "preferences": {
+        "tabHeader": "Preferences"
       }
     },
     "notes": {

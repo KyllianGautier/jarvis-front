@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { appConstants } from '../../constants/app-constants';
 
 @Component({
@@ -10,8 +10,12 @@ export class LoadingComponent implements OnInit {
 
   public appName: string;
 
+  @Input()
+  public showLogo: boolean;
+
   constructor() {
     this.appName = appConstants.APP_NAME;
+    this.showLogo = false;
   }
 
   ngOnInit(): void { }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/API/api.service';
 import {MessageService, SelectItem} from 'primeng/api';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
@@ -30,7 +29,6 @@ export class TaskFormComponent implements OnInit {
   public priorityOptions: SelectItem[];
 
   constructor(
-    private apiService: ApiService,
     private messageService: MessageService,
     private formBuilder: FormBuilder,
     private translate: TranslateService

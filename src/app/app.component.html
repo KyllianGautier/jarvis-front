@@ -1,5 +1,5 @@
 <p-toast></p-toast>
 <router-outlet *ngIf="translationLoaded else loadingScreen"></router-outlet>
 <ng-template #loadingScreen>
-  <app-loading></app-loading>
+  <app-loading [showLogo]="true"></app-loading>
 </ng-template>

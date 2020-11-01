@@ -31,9 +31,9 @@ export class HomeComponent implements OnInit {
     this.signedInUser = this.authenticationService.getSignedInUser();
 
     this.navItems = [
-      { label: 'home.header.navMenu.notes', routerLink: 'notes', icon: 'pi pi-pencil' },
-      { label: 'home.header.navMenu.tasks', routerLink: 'tasks', icon: 'pi pi-check-circle' },
-      { label: 'home.header.navMenu.to-watch', routerLink: 'to-watch', icon: 'pi pi-desktop' }
+      { label: 'home.header.navMenu.notes', routerLink: appPaths.NOTES, icon: 'pi pi-pencil' },
+      { label: 'home.header.navMenu.tasks', routerLink: appPaths.TASKS, icon: 'pi pi-check-circle' },
+      { label: 'home.header.navMenu.to-watch', routerLink: appPaths.TO_WATCH, icon: 'pi pi-desktop' }
     ];
 
     if (this.authenticationService.isSignedInUserAdministrator()) {
@@ -42,8 +42,8 @@ export class HomeComponent implements OnInit {
 
     this.userMenuItems = [
       {
-        label: this.translate.instant('home.header.userMenu.settings'),
-        routerLink: '', icon: 'pi pi-cog', command: () => this.router.navigate(['/profile'])
+        label: this.translate.instant('home.header.userMenu.profile'),
+        routerLink: appPaths.PROFILE, icon: 'pi pi-user'
       },
       {
         label: this.translate.instant('home.header.userMenu.signOut'),

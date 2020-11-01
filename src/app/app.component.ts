@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import {delay} from 'rxjs/operators';
 import { PrimeNGConfig } from 'primeng/api';
 
 @Component({

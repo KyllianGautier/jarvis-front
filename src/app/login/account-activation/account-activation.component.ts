@@ -6,8 +6,8 @@ import { mergeMap } from 'rxjs/operators';
 import { appPaths } from '../../shared/constants/app-paths';
 import { MessageService } from 'primeng/api';
 import { TranslateService } from '@ngx-translate/core';
-import { ClientService } from '../../shared/services/client/client.service';
 import { appConstants } from '../../shared/constants/app-constants';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-account-activation',
@@ -28,7 +28,7 @@ export class AccountActivationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private clientService: ClientService,
+    private deviceService: DeviceDetectorService,
     private messageService: MessageService,
     private translate: TranslateService
   ) {
@@ -40,9 +40,10 @@ export class AccountActivationComponent implements OnInit {
     this.accountActivationForm = this.formBuilder.group({
       email: [null, [ Validators.required ]],
       token: [null, [ Validators.required ]],
-      password: ['', [ Validators.required ]],
-      passwordConfirmation: ['', [ Validators.required ]],
-      deviceType: ['devicetype', [ Validators.required ]]
+      password: [null, [ Validators.required ]],
+      passwordConfirmation: [null, [ Validators.required ]],
+      deviceType: [this.deviceService.os, [ Validators.required ]],
+      browser: [this.deviceService.browser, [ Validators.required ]]
     }, { validators: this.checkPasswords });
 
     this.newAccountActivationTokenForm = this.formBuilder.group({
