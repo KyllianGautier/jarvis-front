@@ -1,0 +1,17 @@
+<div class="section">
+  <div *ngIf="!showSkeleton else skeleton" fxLayout="row" fxLayoutGap="12px">
+    <h3 translate>home.profile.preferences.header</h3>
+  </div>
+</div>
+
+<ng-template #skeleton>
+  <div fxLayout="column" fxLayoutGap="12px">
+    <div fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="start center">
+      <ngx-skeleton-loader [theme]="{ width: '200px', 'background-color': 'red' }"></ngx-skeleton-loader>
+    </div>
+    <div fxLayout="row" fxLayoutGap="12px">
+      <ngx-skeleton-loader count="2" [theme]="{ height: '36px' }" fxFlex></ngx-skeleton-loader>
+      <ngx-skeleton-loader count="2" [theme]="{ height: '36px' }" fxFlex></ngx-skeleton-loader>
+    </div>
+  </div>
+</ng-template>

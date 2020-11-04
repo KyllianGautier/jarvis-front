@@ -15,6 +15,16 @@ export class ProfileService {
   ) { }
 
   public getUserDevices(): Observable<UserDevice[]> {
-    return this.http.get<UserDevice[]>(apiPaths.API_PATH + apiPaths.SECURITY_USER_DEVICES, { headers: this.authenticationService.getAuthorizationHeader() });
+    return this.http.get<UserDevice[]>(
+      apiPaths.API_PATH + apiPaths.USERS_DEVICES,
+      { headers: this.authenticationService.getAuthorizationHeader() }
+    );
+  }
+
+  public getUser(): Observable<User> {
+    return this.http.get<User>(
+      apiPaths.API_PATH + apiPaths.USERS_USER,
+      { headers: this.authenticationService.getAuthorizationHeader() }
+    );
   }
 }

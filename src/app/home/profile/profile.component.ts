@@ -11,6 +11,7 @@ export class ProfileComponent implements OnInit {
 
   public dataLoaded: boolean;
 
+  public user: User;
   public userDevices: UserDevice[];
 
   constructor(
@@ -21,14 +22,16 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     forkJoin({
+      user: this.profileService.getUser(),
       userDevices: this.profileService.getUserDevices()
     })
       .subscribe(results => {
-        this.userDevices = results.userDevices;
-
-        this.dataLoaded = true;
-      },
-        err => console.error(err));
+          this.user = results.user;
+          this.userDevices = results.userDevices;
+          this.dataLoaded = true;
+        },
+        err => console.error(err)
+      );
   }
 
 }

@@ -1,0 +1,30 @@
+<div class="section">
+  <span id="verifying-tag"
+        class="p-tag"
+        [class.p-tag-success]="userDevice.verified"
+        [class.p-tag-danger]="!userDevice.verified" translate>
+    {{ userDevice.verified ? 'home.profile.security.device.verifyingTag.true' : 'home.profile.security.device.verifyingTag.false' }}
+  </span>
+  <div fxLayout="column" fxLayoutGap="12px">
+    <div>
+      <i id="device-icon" class="pi pi-desktop"></i>
+      <p id="device-type">{{ userDevice.type }}</p>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center end">
+      <div fxFlex>
+        <p appTinyLabel translate>home.profile.security.device.connections</p>
+        <p appImportantLabel>{{ userDevice.connections.length }}</p>
+      </div>
+      <div fxFlex>
+        <p appTinyLabel translate>home.profile.security.device.publicIp</p>
+        <p appImportantLabel>{{ userDevice.publicIp }}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end">
+      <p-button
+        styleClass="p-button-sm p-button-raised p-button-text p-button-plain"
+        [label]="'home.profile.security.device.button' | translate">
+      </p-button>
+    </div>
+  </div>
+</div>

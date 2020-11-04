@@ -1,0 +1,26 @@
+<div fxLayout="column" fxLayoutGap="16px">
+  <div class="section">
+    <div *ngIf="!showSkeleton else skeleton" fxLayout="column" fxLayoutGap="12px">
+      <h3 translate>home.profile.security.header</h3>
+    </div>
+  </div>
+
+  <div id="device-grid" *ngIf="!showSkeleton">
+    <app-device-section *ngFor="let device of userDevices" [userDevice]="device"></app-device-section>
+  </div>
+</div>
+
+<ng-template #skeleton>
+  <div fxLayout="column" fxLayoutGap="12px">
+    <div fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="start center">
+      <ngx-skeleton-loader [theme]="{ width: '200px' }"></ngx-skeleton-loader>
+    </div>
+    <div fxLayout="column" fxLayoutGap="12px">
+      <div fxLayoutAlign="row" fxLayoutGap="12px">
+        <ngx-skeleton-loader [theme]="{ height: '36px' }" fxFlex></ngx-skeleton-loader>
+        <ngx-skeleton-loader [theme]="{ height: '36px' }" fxFlex></ngx-skeleton-loader>
+      </div>
+      <ngx-skeleton-loader [theme]="{ height: '36px' }" fxFlex></ngx-skeleton-loader>
+    </div>
+  </div>
+</ng-template>

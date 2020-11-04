@@ -9,7 +9,9 @@ export const apiPaths = {
   AUTHENTICATION_CHECK_TOKEN_VALIDITY: 'auth/activate-account/check-token',
   AUTHENTICATION_NEW_TOKEN: 'auth/activate-account/new-token',
 
-  SECURITY_USER_DEVICES: 'security/devices',
+  USERS_DEVICES: 'users/devices',
+  USERS_USER: 'users/user',
+  USERS_USERS: 'users/users',
 
   TASKS: 'tasks'
 };

@@ -43,9 +43,16 @@ import { TooltipModule } from 'primeng/tooltip';
 import { DropdownModule } from 'primeng/dropdown';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { JarvisFontDirective } from './shared/directives/jarvis-font/jarvis-font.directive';
+import { JarvisFontDirective } from './shared/directives/jarvis-font.directive';
 import { AccountActivationComponent } from './login/account-activation/account-activation.component';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { UserSectionComponent } from './home/profile/user-section/user-section.component';
+import { PreferencesSectionComponent } from './home/profile/preferences-section/preferences-section.component';
+import { SecuritySectionComponent } from './home/profile/security-section/security-section.component';
+import { DeviceSectionComponent } from './home/profile/security-section/device-section/device-section.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { TinyLabelDirective } from './shared/directives/tiny-label.directive';
+import { ImportantLabelDirective } from './shared/directives/important-label.directive';
 
 registerLocaleData(localeFr);
 
@@ -67,7 +74,13 @@ export function createTranslateLoader(http: HttpClient) {
     TaskFormComponent,
     LoadingComponent,
     JarvisFontDirective,
-    AccountActivationComponent
+    AccountActivationComponent,
+    UserSectionComponent,
+    PreferencesSectionComponent,
+    SecuritySectionComponent,
+    DeviceSectionComponent,
+    TinyLabelDirective,
+    ImportantLabelDirective
   ],
   imports: [
     TranslateModule.forRoot({
@@ -104,7 +117,8 @@ export function createTranslateLoader(http: HttpClient) {
     TooltipModule,
     DropdownModule,
     FlexLayoutModule,
-    InputNumberModule
+    InputNumberModule,
+    NgxSkeletonLoaderModule
   ],
   providers: [
     UserConnectionGuard,

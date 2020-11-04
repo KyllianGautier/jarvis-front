@@ -1,0 +1,34 @@
+<div class="section">
+  <div *ngIf="!showSkeleton else skeleton" fxLayout="column" fxLayoutGap="12px">
+    <span id="user-tag" class="p-tag p-tab-info" *ngIf="user.admin" translate>home.profile.profile.administrator</span>
+
+    <div id="user-header" fxLayout="row" fxLayoutAlign="center center" fxFlex>
+      <i id="user-icon" class="pi pi-user"></i>
+      <span fxLayout="column" fxLayoutGap="12px">
+        <p id="user-label" appImportantLabel>{{ user.firstName + ' ' + user.lastName | titlecase }}</p>
+        <p id="user-email">{{ user.email }}</p>
+      </span>
+    </div>
+    <div fxLayout="row" fxLayoutGap="12px" fxFlex>
+      <div fxFlex>
+        <p appTinyLabel translate>home.profile.profile.subscriptionDate</p>
+        <p appImportantLabel>{{ user.subscriptionDate | date: 'shortDate' }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #skeleton>
+  <div fxLayout="column" fxLayoutGap="12px">
+    <div fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="start center">
+      <ngx-skeleton-loader appearance="circle" [theme]="{ height: '150px', width: '150px', margin: '24px' }"></ngx-skeleton-loader>
+      <div fxLayout="column" fxLayoutGap="12px">
+        <ngx-skeleton-loader [theme]="{ width: '200px', 'background-color': 'red' }"></ngx-skeleton-loader>
+        <ngx-skeleton-loader [theme]="{ width: '350px' }"></ngx-skeleton-loader>
+      </div>
+    </div>
+    <div>
+      <ngx-skeleton-loader count="2" [theme]="{ height: '24px' }"></ngx-skeleton-loader>
+    </div>
+  </div>
+</ng-template>

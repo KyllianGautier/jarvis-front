@@ -105,22 +105,24 @@
       }
     },
     "profile": {
-      "informations": {
-        "tabHeader": "Informations"
-      },
-      "devicesAndConnections": {
-        "tabHeader": "Devices & connections",
-        "table": {
-          "header": {
-            "type": "Device",
-            "ip": "IP address",
-            "verified": "Status",
-            "connections": "Connections"
-          }
-        }
+      "profile": {
+        "administrator": "Admin",
+        "subscriptionDate": "Subscription"
       },
       "preferences": {
-        "tabHeader": "Preferences"
+        "header": "Preferences"
+      },
+      "security": {
+        "header": "Security",
+        "device": {
+          "verifyingTag": {
+            "true": "Verified",
+            "false": "Unsafe"
+          },
+          "connections": "Connections",
+          "publicIp": "IP address",
+          "button": "Details"
+        }
       }
     },
     "notes": {

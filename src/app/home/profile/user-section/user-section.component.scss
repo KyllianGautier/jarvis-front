@@ -1,0 +1,26 @@
+@import "src/assets/theme/global-variables";
+
+.section {
+  position: relative;
+
+  #user-tag {
+    position: absolute;
+    top: $global-spacing;
+    right: $global-spacing;
+  }
+
+  #user-header {
+    #user-icon {
+      font-size: 64px;
+      padding: $global-padding;
+    }
+
+    #user-label {
+      margin: 0px;
+    }
+
+    #user-email {
+      margin: 0px;
+    }
+  }
+}

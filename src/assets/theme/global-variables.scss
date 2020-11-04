@@ -10,9 +10,6 @@ $global-primary-bkg-color: var(--surface-a);
 $global-secondary-bkg-color: var(--surface-b);
 $global-tertiary-bkg-color: var(--surface-c);
 
-// Border colors:
-$global-primary-border-color: var(--surface-d);
-
 // Font colors:
 $global-primary-font-color: var(--text-color);
 $global-secondary-font-color: var(--text-color-secondary);
@@ -20,7 +17,17 @@ $global-secondary-font-color: var(--text-color-secondary);
 // Font family:
 $global-font-family: var(--font-family);
 
+// Borders:
+$global-primary-border-color: var(--surface-d);
+$global-border-radius: 4px;
+
+// Skeleton:
+$global-skeleton-bkg-color: var(--surface-d);
+
 // Spacing:
 $global-spacing-small: 12px;
 $global-spacing: 18px;
 $global-spacing-large: 24px;
+$global-padding-small: 12px;
+$global-padding: 18px;
+$global-padding-large: 24px;

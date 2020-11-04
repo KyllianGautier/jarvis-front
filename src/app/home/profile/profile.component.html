@@ -1,40 +1,7 @@
-<p-tabView *ngIf="dataLoaded else loadingScreen" orientation="left" fxFill>
-  <p-tabPanel [header]="'home.profile.informations.tabHeader' | translate" leftIcon="pi pi-info-circle"></p-tabPanel>
-  <p-tabPanel [header]="'home.profile.devicesAndConnections.tabHeader' | translate" leftIcon="pi pi-lock">
-    <p>{{ userDevices | json }}</p>
-    <p-table [value]="userDevices" dataKey="userDevice">
-      <ng-template pTemplate="header">
-        <tr>
-          <th></th>
-          <th>{{ 'home.profile.devicesAndConnections.table.header.type' | translate }}</th>
-          <th>{{ 'home.profile.devicesAndConnections.table.header.ip' | translate }}</th>
-          <th>{{ 'home.profile.devicesAndConnections.table.header.verified' | translate }}</th>
-          <th>{{ 'home.profile.devicesAndConnections.table.header.connections' | translate }}</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-userDevice let-expanded="expanded">
-        <tr [pRowToggler]="userDevice">
-          <td>
-            <button type="button" pButton pRipple class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
-          </td>
-          <td>{{ userDevice.type }}</td>
-          <td>{{ userDevice.publicIp }}</td>
-          <td>{{ userDevice.verified ? 'Verified' : 'Disabled' }}</td>
-          <td>{{ userDevice.connections.length }}</td>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="rowexpansion" let-userDevice>
-        <tr>
-          <td colspan="5">
-            <p>{{ userDevice | json }}</p>
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
-  </p-tabPanel>
-  <p-tabPanel [header]="'home.profile.preferences.tabHeader' | translate" leftIcon="pi pi-sliders-h"></p-tabPanel>
-</p-tabView>
-
-<ng-template #loadingScreen>
-  <app-loading></app-loading>
-</ng-template>
+<div fxLayout="column" fxLayoutAlign="start center">
+  <div id="home-layout-profile-container" fxLayout="column" fxLayoutGap="16px">
+    <app-user-section [showSkeleton]="!dataLoaded" [user]="user"></app-user-section>
+    <app-preferences-section [showSkeleton]="!dataLoaded"></app-preferences-section>
+    <app-security-section [showSkeleton]="!dataLoaded" [userDevices]="userDevices"></app-security-section>
+  </div>
+</div>
