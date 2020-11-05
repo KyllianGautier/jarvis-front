@@ -13,7 +13,7 @@ import { AdministrationComponent } from './home/administration/administration.co
 import { ProfileComponent } from './home/profile/profile.component';
 import { UserConnectionGuard } from './shared/guards/UserConnectionGuard';
 import { AdministratorGuard } from './shared/guards/AdministratorGuard';
-
+import { DeviceActivationComponent } from './login/device-activation/device-activation.component';
 
 const routes: Routes = [
   {
@@ -21,6 +21,7 @@ const routes: Routes = [
     children: [
       { path: '', component: LoginComponent },
       { path: appPaths.ACCOUNT_ACTIVATION, component: AccountActivationComponent },
+      { path: appPaths.DEVICE_ACTIVATION, component: DeviceActivationComponent },
       { path: '**', component: NotFoundComponent }
     ]
   },

@@ -56,6 +56,8 @@ h1, h2, h3, h4, h5, h6 {
 
   #app-content {
     background-color: $home-layout-content-bkg-color;
+    max-height: 100%;
+    overflow: auto;
   }
 }
 
@@ -70,6 +72,7 @@ h1, h2, h3, h4, h5, h6 {
 // ----------------------------------------
 
 #home-layout-profile-container {
-  width: 800px;
+  width: 600px;
   margin-top: $global-spacing;
+  padding-bottom: $global-spacing;
 }

@@ -38,13 +38,10 @@
           "detail": "Your request will be treated as soon as possible"
         }
       },
-      "deviceValidationForm": {
-        "form": {
-          "secretCode": {
-            "label": "Secret code"
-          }
-        },
-        "button": "Send code"
+      "deviceActivation": {
+        "title": "Your device is not authorized",
+        "message": "Check your email, an activation link has been sent to you",
+        "button": "Back to sign-in"
       }
     },
     "accountActivation": {

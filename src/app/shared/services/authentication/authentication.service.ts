@@ -51,15 +51,15 @@ export class AuthenticationService {
   }
 
   public checkTokenValidity(email: string, token: string): Observable<boolean> {
-    return this.http.post<boolean>(apiPaths.API_PATH + apiPaths.AUTHENTICATION_CHECK_TOKEN_VALIDITY, { email, token });
+    return this.http.post<boolean>(apiPaths.API_PATH + apiPaths.AUTHENTICATION_ACCOUNT_ACTIVATION_CHECK_TOKEN, { email, token });
   }
 
   public getNewAccountActivationToken(email: string): Observable<void> {
-    return this.http.post<null>(apiPaths.API_PATH + apiPaths.AUTHENTICATION_NEW_TOKEN, { email });
+    return this.http.post<null>(apiPaths.API_PATH + apiPaths.AUTHENTICATION_ACCOUNT_ACTIVATION_NEW_TOKEN, { email });
   }
 
-  public activateAccount(activationData: any): Observable<void> {
-    return this.http.post<void>(apiPaths.API_PATH + apiPaths.AUTHENTICATION_ACTIVATE_ACCOUNT, activationData);
+  public activateAccount(accountActivationRequest: AccountActivationRequest): Observable<void> {
+    return this.http.post<void>(apiPaths.API_PATH + apiPaths.AUTHENTICATION_ACCOUNT_ACTIVATION, accountActivationRequest);
   }
 
   public signIn(signInRequest: SignInRequest): Observable<SignInResponse> {

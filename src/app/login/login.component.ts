@@ -22,9 +22,6 @@ export class LoginComponent implements OnInit {
 
   public signInForm: FormGroup;
   public signUpForm: FormGroup;
-  public deviceValidationForm: FormGroup;
-
-  public deviceInfos;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -48,12 +45,6 @@ export class LoginComponent implements OnInit {
       firstName: [null, [ Validators.required ]],
       lastName: [null, [ Validators.required ]],
       email: [null, [ Validators.email, Validators.required ], this.emailAsyncValidator(this.authenticationService)]
-    });
-
-    this.deviceValidationForm = this.formBuilder.group({
-      deviceType: [this.deviceService.os, [ Validators.required ]],
-      browser: [this.deviceService.browser, [ Validators.required ]],
-      secretCode: [null, [ Validators.required ]]
     });
   }
 
@@ -106,9 +97,5 @@ export class LoginComponent implements OnInit {
           },
             error => console.error(error));
     }
-  }
-
-  public validateDevice(): void {
-
   }
 }

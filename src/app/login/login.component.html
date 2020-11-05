@@ -1,78 +1,80 @@
 <div id="login-wallpaper">
   <p-panel id="login-section">
-    <h1 id="welcome-message" appJarvisFont>
-      {{ 'login.welcomeMessage' | translate: { appName: appName } }}
-    </h1>
-    <p-tabView *ngIf="!deviceValidation else deviceValidationSection">
-      <p-tabPanel header="{{ 'login.connection.signInForm.tabHeader' | translate }}">
-        <form (submit)="signIn()" [formGroup]="signInForm" class="p-fluid">
-          <div class="p-field">
+    <div *ngIf="!deviceValidation else deviceValidationSection">
+      <h1 id="welcome-message" appJarvisFont>
+        {{ 'login.welcomeMessage' | translate: { appName: appName } }}
+      </h1>
+      <p-tabView>
+        <p-tabPanel header="{{ 'login.connection.signInForm.tabHeader' | translate }}">
+          <form (submit)="signIn()" [formGroup]="signInForm" class="p-fluid">
+            <div class="p-field">
             <span class="p-float-label">
               <input type="text" formControlName="email" pInputText>
               <label translate>login.connection.signInForm.form.email.label</label>
             </span>
-          </div>
-          <div class="p-field">
+            </div>
+            <div class="p-field">
             <span class="p-float-label">
               <input type="password" formControlName="password" pInputText>
               <label translate>login.connection.signInForm.form.password.label</label>
             </span>
-          </div>
-          <p-button
-            type="submit"
-            [label]="'login.connection.signInForm.button' | translate"
-            [disabled]="signInForm.invalid">
-          </p-button>
-        </form>
-      </p-tabPanel>
-      <p-tabPanel header="{{ 'login.connection.signUpForm.tabHeader' | translate }}">
-        <form class="p-fluid p-formgrid p-grid" (submit)="signUp()" [formGroup]="signUpForm">
-          <div class="p-field p-col-12 p-md-6">
+            </div>
+            <p-button
+              type="submit"
+              [label]="'login.connection.signInForm.button' | translate"
+              [disabled]="signInForm.invalid">
+            </p-button>
+          </form>
+        </p-tabPanel>
+        <p-tabPanel header="{{ 'login.connection.signUpForm.tabHeader' | translate }}">
+          <form class="p-fluid p-formgrid p-grid" (submit)="signUp()" [formGroup]="signUpForm">
+            <div class="p-field p-col-12 p-md-6">
             <span class="p-float-label">
               <input type="text" formControlName="firstName" pInputText>
               <label translate>login.connection.signUpForm.form.firstName.label</label>
             </span>
-          </div>
-          <div class="p-field p-col-12 p-md-6">
+            </div>
+            <div class="p-field p-col-12 p-md-6">
             <span class="p-float-label">
               <input type="text" formControlName="lastName" pInputText>
               <label translate>login.connection.signUpForm.form.lastName.label</label>
             </span>
-          </div>
-          <div class="p-field p-col-12">
+            </div>
+            <div class="p-field p-col-12">
             <span class="p-float-label">
               <input type="text" formControlName="email" pInputText>
               <label translate>login.connection.signUpForm.form.email.label</label>
             </span>
-            <small class="p-invalid" *ngIf="signUpForm.get('email').hasError('emailExists')" translate>
-              login.connection.signUpForm.form.email.error
-            </small>
-          </div>
-          <p-button
-            type="submit"
-            class="p-col-12"
-            [label]="'login.connection.signUpForm.button' | translate"
-            [disabled]="signUpForm.invalid">
-          </p-button>
-        </form>
-      </p-tabPanel>
-    </p-tabView>
+              <small class="p-invalid" *ngIf="signUpForm.get('email').hasError('emailExists')" translate>
+                login.connection.signUpForm.form.email.error
+              </small>
+            </div>
+            <p-button
+              type="submit"
+              class="p-col-12"
+              [label]="'login.connection.signUpForm.button' | translate"
+              [disabled]="signUpForm.invalid">
+            </p-button>
+          </form>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
   </p-panel>
 </div>
 
 <ng-template #deviceValidationSection>
-  <p>{{ deviceValidationForm.value | json }}</p>
-  <form (submit)="validateDevice()" [formGroup]="deviceValidationForm" class="p-fluid">
-    <div class="p-field">
-      <span class="p-float-label">
-        <p-inputNumber [useGrouping]="false" formControlName="secretCode"></p-inputNumber>
-        <label translate>login.connection.deviceValidationForm.form.secretCode.label</label>
-      </span>
-    </div>
+  <div id="email-message-container" fxLayout="column" fxLayoutGap="12px" fxLayoutAlign="start center">
+    <i id="email-logo" class="pi pi-envelope" fxFlex></i>
+    <h3 translate fxFlex>login.connection.deviceActivation.title</h3>
+    <p translate fxFlex>login.connection.deviceActivation.message</p>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start">
     <p-button
-      type="submit"
-      [label]="'login.connection.deviceValidationForm.button' | translate"
-      [disabled]="deviceValidationForm.invalid">
+      styleClass="p-button-text"
+      (onClick)="deviceValidation = false"
+      icon="pi pi-arrow-left"
+      iconPos="left"
+      [label]="'login.connection.deviceActivation.button' | translate">
     </p-button>
-  </form>
+  </div>
 </ng-template>

@@ -1,0 +1,9 @@
+@import "src/assets/theme/global-variables";
+
+#email-message-container {
+  margin-bottom: $global-spacing-large;
+
+  #email-logo {
+    font-size: 64px;
+  }
+}

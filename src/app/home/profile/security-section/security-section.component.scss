@@ -1,7 +1,8 @@
 #device-grid {
+  max-width: 100%;
   margin: unset;
   display: grid;
   grid-row-gap: 16px;
   grid-column-gap: 16px;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }

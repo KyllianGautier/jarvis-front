@@ -53,6 +53,7 @@ import { DeviceSectionComponent } from './home/profile/security-section/device-s
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { TinyLabelDirective } from './shared/directives/tiny-label.directive';
 import { ImportantLabelDirective } from './shared/directives/important-label.directive';
+import { DeviceActivationComponent } from './login/device-activation/device-activation.component';
 
 registerLocaleData(localeFr);
 
@@ -80,7 +81,8 @@ export function createTranslateLoader(http: HttpClient) {
     SecuritySectionComponent,
     DeviceSectionComponent,
     TinyLabelDirective,
-    ImportantLabelDirective
+    ImportantLabelDirective,
+    DeviceActivationComponent
   ],
   imports: [
     TranslateModule.forRoot({
