@@ -38,15 +38,15 @@
           "detail": "Your request will be treated as soon as possible"
         }
       },
-      "deviceActivation": {
+      "deviceVerification": {
         "title": "Your device is not authorized",
-        "message": "Check your email, an activation link has been sent to you",
+        "message": "Check your email, a verification link has been sent to you",
         "button": "Back to sign-in"
       }
     },
     "accountActivation": {
       "accountActivationForm": {
-        "helpMessage": "Please chose a password",
+        "helpMessage": "Please choose a password",
         "form": {
           "email": {
             "label": "Email"
@@ -85,6 +85,16 @@
             "detail": "Can't send a new token on this email"
           }
         }
+      }
+    },
+    "deviceVerification": {
+      "successMessage": {
+        "summary": "Device verified",
+        "detail": "This device has been added to your trusted devices"
+      },
+      "errorMessage": {
+        "summary": "Link expired",
+        "detail": "The verification link is expired"
       }
     }
   },

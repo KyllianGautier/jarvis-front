@@ -33,6 +33,7 @@
               "node_modules/primeng/resources/themes/md-dark-indigo/theme.css",
               // "node_modules/primeng/resources/themes/bootstrap4-dark-blue/theme.css",
               "node_modules/primeicons/primeicons.css",
+              // "node_modules/css.gg/icons/all.css",
               "node_modules/primeflex/primeflex.css"
             ],
             "scripts": []

@@ -6,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { appPaths } from '../shared/constants/app-paths';
 import { appConstants } from '../shared/constants/app-constants';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit {
     this.signedInUser = this.authenticationService.getSignedInUser();
 
     this.navItems = [
-      { label: 'home.header.navMenu.notes', routerLink: appPaths.NOTES, icon: 'pi pi-pencil' },
+      { label: 'home.header.navMenu.notes', routerLink: appPaths.NOTES, icon: 'pi pi-note' },
       { label: 'home.header.navMenu.tasks', routerLink: appPaths.TASKS, icon: 'pi pi-check-circle' },
       { label: 'home.header.navMenu.to-watch', routerLink: appPaths.TO_WATCH, icon: 'pi pi-desktop' }
     ];

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeviceActivationComponent } from './device-activation.component';
+import { DeviceVerificationComponent } from './device-verification.component';
 
-describe('DeviceActivationComponent', () => {
-  let component: DeviceActivationComponent;
-  let fixture: ComponentFixture<DeviceActivationComponent>;
+describe('DeviceVerificationComponent', () => {
+  let component: DeviceVerificationComponent;
+  let fixture: ComponentFixture<DeviceVerificationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeviceActivationComponent ]
+      declarations: [ DeviceVerificationComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeviceActivationComponent);
+    fixture = TestBed.createComponent(DeviceVerificationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

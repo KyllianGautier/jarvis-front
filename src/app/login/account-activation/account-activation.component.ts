@@ -55,11 +55,11 @@ export class AccountActivationComponent implements OnInit {
         this.accountActivationForm.get('token').setValue(params.token);
         this.accountActivationForm.get('email').setValue(params.email);
         this.newAccountActivationTokenForm.get('email').setValue(params.email);
-        return this.authenticationService.checkTokenValidity(params.email, params.token);
+        return this.authenticationService.checkAccountActivationTokenValidity(params.email, params.token);
       }))
       .subscribe(
         tokenValidity => this.tokenVerified = tokenValidity,
-        err => this.tokenVerified = false
+        err => this.router.navigate([appPaths.LOGIN])
       );
   }
 

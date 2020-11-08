@@ -65,8 +65,8 @@
 <ng-template #deviceValidationSection>
   <div id="email-message-container" fxLayout="column" fxLayoutGap="12px" fxLayoutAlign="start center">
     <i id="email-logo" class="pi pi-envelope" fxFlex></i>
-    <h3 translate fxFlex>login.connection.deviceActivation.title</h3>
-    <p translate fxFlex>login.connection.deviceActivation.message</p>
+    <h3 translate fxFlex>login.connection.deviceVerification.title</h3>
+    <p translate fxFlex>login.connection.deviceVerification.message</p>
   </div>
   <div fxLayout="row" fxLayoutAlign="start">
     <p-button
@@ -74,7 +74,7 @@
       (onClick)="deviceValidation = false"
       icon="pi pi-arrow-left"
       iconPos="left"
-      [label]="'login.connection.deviceActivation.button' | translate">
+      [label]="'login.connection.deviceVerification.button' | translate">
     </p-button>
   </div>
 </ng-template>

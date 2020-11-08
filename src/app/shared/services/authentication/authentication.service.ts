@@ -50,7 +50,7 @@ export class AuthenticationService {
     );
   }
 
-  public checkTokenValidity(email: string, token: string): Observable<boolean> {
+  public checkAccountActivationTokenValidity(email: string, token: string): Observable<boolean> {
     return this.http.post<boolean>(apiPaths.API_PATH + apiPaths.AUTHENTICATION_ACCOUNT_ACTIVATION_CHECK_TOKEN, { email, token });
   }
 
@@ -60,6 +60,14 @@ export class AuthenticationService {
 
   public activateAccount(accountActivationRequest: AccountActivationRequest): Observable<void> {
     return this.http.post<void>(apiPaths.API_PATH + apiPaths.AUTHENTICATION_ACCOUNT_ACTIVATION, accountActivationRequest);
+  }
+
+  public checkDeviceVerificationTokenValidity(email: string, token: string): Observable<boolean> {
+    return this.http.post<boolean>(apiPaths.API_PATH + apiPaths.AUTHENTICATION_DEVICE_VERIFICATION_CHECK_TOKEN, { email, token });
+  }
+
+  public verifyDevice(email: string, token: string): Observable<void> {
+    return this.http.post<void>(apiPaths.API_PATH + apiPaths.AUTHENTICATION_DEVICE_VERIFICATION, { email, token });
   }
 
   public signIn(signInRequest: SignInRequest): Observable<SignInResponse> {

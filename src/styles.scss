@@ -5,6 +5,10 @@
 @import 'src/assets/theme/login-theme/login-theme';
 @import 'src/assets/theme/home-theme/home-theme';
 
+:root {
+  --ggs: 1;
+}
+
 html, body {
   padding: 0px;
   margin: 0px;
